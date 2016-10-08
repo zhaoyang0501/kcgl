@@ -17,6 +17,14 @@ public class Food extends BaseEntity<Long>{
 	
 	private String img;
 	
+	private Double price;
+	
+	public Double getPrice() {
+		return price;
+	}
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 	@ManyToOne
 	private FoodCategory foodCategory;
 	
