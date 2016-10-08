@@ -3,8 +3,10 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-</head>
-<body >
+ <link href="${pageContext.request.contextPath}/css/plugins/webuploader/webuploader.css" rel="stylesheet">
+ </head>
+<body>
+
     <div class="wrapper wrapper-content animated fadeInRight">
        <div class="row">
             <div class="col-sm-12">
@@ -65,7 +67,20 @@
 		                           				
 		                           			<tr>
 		                           				<td>照片</td>
-		                           				<td> <input name='username' type="file" class="form-control"></td>
+		                           				<td> 
+		                           					<div id="uploader" >
+							                           <div class="container-fluid">
+														  <div id="thelist" class="row ">
+														  </div>
+														</div>
+												    	
+												    	<div class="row">
+												    		<div class="col-xs-12">
+												    			<div id="picker">选择文件</div>
+												    		</div>
+												    	</div>
+													</div>
+													</td>
 		                           			</tr>
 		                           			
 		                           			
@@ -160,6 +175,55 @@
      }
     
     $(document).ready(function(){
+    	
+    	var uploader = WebUploader.create({
+    		auto:true,
+    	    server: '${pageContext.request.contextPath}/fileupload/upload',
+    	    pick: '#picker',
+    	    resize: false
+    	});
+    	
+    	uploader.on( 'fileQueued', function( file ) {
+    		 var $li = $(
+    		            '<div id="' + file.id + '" class="col-xs-12 col-sm-2 file-item thumbnail">' +
+    		                '<img>' +
+    		                '<div class="info">' + file.name + '</div>' +
+    		                '<p class="state">等待上传...</p>' +
+    		     	       ' <input type="hidden" name="filestr" value=""/>'+
+    		            '</div>'
+    		            ),
+    		        $img = $li.find('img');
+    		    $("#thelist").append( $li );
+    		    
+    		    uploader.makeThumb( file, function( error, src ) {
+    		        if ( error ) {
+    		            $img.replaceWith('<span>不能预览</span>');
+    		            return;
+    		        }
+
+    		        $img.attr( 'src', src );
+    		    }, 100, 100 );
+    		});
+    	
+	    	uploader.on( 'uploadSuccess',  function(file, data){
+	    		 $( '#'+file.id ).find('p.state').text('已上传');
+	    		 $( '#'+file.id ).find("input").val(data.datas.filepath);
+	    		    return false;
+			});
+
+	    	uploader.on( 'uploadError', function( file ) {
+	    	    $( '#'+file.id ).find('p.state').text('上传出错');
+	    	});
+
+	    	uploader.on( 'uploadComplete', function( file ) {
+	    	    $( '#'+file.id ).find('.progress').fadeOut();
+	    	});
+    	
+	    	$("#submitfile").on( 'click', function() {
+	    		 uploader.upload();
+	    	});
+    	
+    	
         	$("#_new").click(function(){
         		$("input[name='id']").val("");
  		    	$("input[name='chinesename']").val("");
@@ -224,6 +288,8 @@
 		     } )
         });
     </script>
+    <script src="${pageContext.request.contextPath}/plugins/webuploader/webuploader.js "></script>
+    
 </body>
 
 </html>
