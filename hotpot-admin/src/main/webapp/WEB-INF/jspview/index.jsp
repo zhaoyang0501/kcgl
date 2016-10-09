@@ -54,45 +54,24 @@
                         <div class="logo-element">H+
                         </div>
                     </li>
+                    
+                    
                      <li>
                         <a href="#">
                             <i class="fa fa fa-bar-chart-o"></i>
-                            <span class="nav-label">论坛模块</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="bbs/article/index">帖子管理</a>
-                            </li>
-                         
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa fa-bar-chart-o"></i>
-                            <span class="nav-label">考试模块</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="exam/question/index">题库管理</a>
-                            </li>
-                            
-                             <li>
-                                <a class="J_menuItem" href="exam/category/index">题库分类</a>
-                            </li>
-                        </ul>
-                    </li>
-                     <li>
-                        <a href="#">
-                            <i class="fa fa fa-bar-chart-o"></i>
-                            <span class="nav-label">系统设置</span>
+                            <span class="nav-label">系统菜单</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="sys/user/index">员工管理</a></li>
                             <li><a class="J_menuItem" href="sys/food/index">菜品管理</a></li>
-                             <li><a class="J_menuItem" href="sys/order/index">预定管理</a></li>
+                            <li><a class="J_menuItem" href="sys/order/index">预定管理</a></li>
+                            <li><a class="J_menuItem" href="sys/order/index">开台/点菜/结账</a></li>
+                             <li><a class="J_menuItem" href="sys/order/index">注册会员管理</a></li>
+                             <li><a class="J_menuItem" href="sys/order/index">留言管理</a></li>
+                             <li><a class="J_menuItem" href="sys/order/index">公告管理</a></li>
+                             <li><a class="J_menuItem" href="sys/order/index">公告发布</a></li>
+                             <li><a class="J_menuItem" href="sys/order/index">盈利统计</a></li>
                         </ul>
                     </li>
                 </ul>

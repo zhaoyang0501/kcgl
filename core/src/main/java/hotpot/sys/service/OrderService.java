@@ -1,11 +1,13 @@
 package hotpot.sys.service;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -14,9 +16,15 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import hotpot.common.service.SimpleCurdService;
+import hotpot.sys.entity.FrontUser;
 import hotpot.sys.entity.Order;
+import hotpot.sys.repository.OrderRepository;
 @Service
 public class OrderService extends SimpleCurdService<Order, Long> {
+	
+	@Autowired
+	private OrderRepository orderRepository;
+	
 	public Page<Order> findAll(final int pageNumber, final int pageSize,final Date orderDate){
         PageRequest pageRequest = new PageRequest(pageNumber - 1, pageSize, new Sort(Direction.DESC, "id"));
         Specification<Order> spec = new Specification<Order>() {
@@ -30,5 +38,9 @@ public class OrderService extends SimpleCurdService<Order, Long> {
         };
         Page<Order> result = (Page<Order>) simpleCurdRepository.findAll(spec, pageRequest);
         return result;
-  } 
+  }
+
+	public List<Order> findByFrontUser(FrontUser user) {
+		return this.orderRepository.findByFrontUser(user);
+	} 
 }

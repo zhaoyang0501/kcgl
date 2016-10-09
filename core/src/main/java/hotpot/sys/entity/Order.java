@@ -18,7 +18,7 @@ public class Order extends BaseEntity<Long>{
 	private Integer num;
 	private String remark;
 	/**1 待审核 2预定成功 3客户取消 4 预定失败*/
-	private String state;
+	private String state="1";
 	public Date getOrderDate() {
 		return orderDate;
 	}

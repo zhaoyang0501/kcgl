@@ -74,7 +74,7 @@
               	<nav class="envor-side-navi">
                 <ul>
                   <li  class="active"><i class="glyphicon glyphicon-arrow-right"></i> <a href="center">个人信息</a></li>
-                  <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="myorder">我的订单</a></li>
+                  <li ><i class="glyphicon glyphicon-arrow-right"></i> <a href="myorder">我的预定</a></li>
                 </ul>
               </nav>
             </div>	
@@ -86,8 +86,8 @@
                 <p><label for="drop-name">用户名:</label>${sessionScope.user.username } </p>
                  <p><label for="drop-name">电子邮箱:</label>${sessionScope.user.email} </p>
                      <p><label for="drop-name">电话:</label>${sessionScope.user.tel} </p>
-                    <p><label for="drop-name">毕业学校:</label>${sessionScope.user.grade} </p>
-                      <p><label for="drop-name">住址:</label>${sessionScope.user.address} </p>
+                    <p><label for="drop-name">学校/单位:</label>${sessionScope.user.grade} </p>
+                      <p><label for="drop-name">地址:</label>${sessionScope.user.address} </p>
                         <p><label for="drop-name">注册日期:</label><fmt:formatDate value="${sessionScope.user.createDate}" pattern="yyyy/MM/dd" /> </p>
                 </form>
             <!--

@@ -82,22 +82,25 @@
                 <nav>
                   <ul>
                     <li>
-                      <a href="index">首页</a>
+                      <a href="${pageContext.request.contextPath}/index">首页</a>
                     </li>
                     <li>
-                      <a href="project">餐桌预定</a>
+                      <a href="${pageContext.request.contextPath}/order">餐桌预定</a>
                     </li>
                     <li>
-                      <a href="foodcategory">最新菜单</a>
-                    </li>
-                      <li>
-                      <a href="center">个人中心</a>
-                    </li>
-                    <li>
-                      <a href="about">关于我们</a>
+                      <a href="${pageContext.request.contextPath}/foodcategory">最新菜单</a>
                     </li>
                      <li>
-                      <a href="register">加入会员</a>
+                      <a href="${pageContext.request.contextPath}/news">最新动态</a>
+                    </li>
+                      <li>
+                      <a href="${pageContext.request.contextPath}/center">个人中心</a>
+                    </li>
+                    <li>
+                      <a href="${pageContext.request.contextPath}/about">关于我们</a>
+                    </li>
+                     <li>
+                      <a href="${pageContext.request.contextPath}/register">加入会员</a>
                     </li>
                   </ul>
                 <!--

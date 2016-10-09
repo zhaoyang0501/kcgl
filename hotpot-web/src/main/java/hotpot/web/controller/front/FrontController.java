@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import hotpot.core.entity.User;
 import hotpot.core.service.UserService;
 import hotpot.sys.entity.FrontUser;
+import hotpot.sys.entity.Order;
 import hotpot.sys.service.FoodService;
 import hotpot.sys.service.FrontUserService;
+import hotpot.sys.service.OrderService;
 /***
  * 前台，首页各种连接登陆等
  * @author qq:263608237
@@ -34,6 +36,8 @@ public class FrontController {
 	@Autowired
 	private FrontUserService frontUserService;
 	
+	@Autowired
+	private OrderService orderService;
 	
 	@Autowired
 	private FoodService foodService;
@@ -51,7 +55,27 @@ public class FrontController {
 	public String index(Model model) {
 		return "index";
 	}
-	
+	/***
+	 * 
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("order")
+	public String order(Model model) {
+		return "order";
+	}
+	@RequestMapping("myorder")
+	public String myorder(Model model,HttpSession httpSession) {
+		FrontUser user=(FrontUser)httpSession.getAttribute("user");
+		model.addAttribute("orders", orderService.findByFrontUser(user));
+		return "myorder";
+	}
+	@RequestMapping("doorder")
+	public String doorder(Order order,Model model) {
+		this.orderService.save(order);
+		model.addAttribute("tip","预定成功！");
+		return "order";
+	}
 	@RequestMapping("foodcategory")
 	public String foodcategory(Model model) {
 		model.addAttribute("categorys",foodService.findAllCategory());
@@ -135,7 +159,7 @@ public class FrontController {
 	 */
 	@RequestMapping("dologin")
 	public String dologin(User user,HttpSession httpSession,Model model) {
-		User loginuser=frontUserService.login(user.getUsername(), user.getPassword());
+		FrontUser loginuser=frontUserService.login(user.getUsername(), user.getPassword());
     	if(loginuser!=null){
     		httpSession.setAttribute("user", loginuser);
             return "index"; 

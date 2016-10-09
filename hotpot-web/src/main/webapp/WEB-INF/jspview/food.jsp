@@ -67,7 +67,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="envor-desktop-breadscrubs-inner">
-                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>在线预约
+                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>最新菜单
               </div>
             </div>
           </div>
