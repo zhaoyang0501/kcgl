@@ -17,11 +17,13 @@
                     
                     <div class="ibox-content">
                         <form role="form" class="form-inline">
+                            
                             <div class="form-group">
                                <div class="input-group date">
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                                <input type="text" class="form-control" value="2014-11-11">
+                                <input name='_name' type="text" class="form-control" value="2016-10-09">
                             </div>
+                            
                             </div>
                             <button class="btn btn-primary" type="button" id='_search'>查询</button>
                         </form>
@@ -142,6 +144,12 @@
    <script>
     var table=null;
     
+    $('.date').datepicker({
+        format: 'yyyy-mm-dd',
+        autoclose: true
+    });
+    
+    
     function submit_form(){
     	$.ajax({
     		   type: "POST",
@@ -226,7 +234,7 @@
         	table=$('#dt_table_view').DataTable( {
         		"dom": "rt<'row'<'col-sm-5'i><'col-sm-7'p>>",
 	            "ajax": {
-	                "url":  $.common.getContextPath() + "/sys/order/list",
+	                "url":  $.common.getContextPath() + "/sys/order/listall",
 	                "type": "POST",
 	                "dataSrc": "datas"
 	              },
@@ -262,8 +270,7 @@
         			} );
         		} 
         	 } ).on('preXhr.dt', function ( e, settings, data ) {
-		        	data.value = $("#_name").val();
-		        	data.columnname = 'chinesename';
+		        	data.orderDate = $("input[name='_name']").val();
 		        	return true;
 		     } ).on('xhr.dt', function ( e, settings, json, xhr ) {
 		    		 $(".dataTables_processing").hide();	

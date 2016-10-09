@@ -28,4 +28,5 @@ public class FoodController extends AbstractBaseCURDController<Food,Long>{
 		model.addAttribute("categorys", this.getSimpleCurdService().findAllCategory());
 		return this.getBasePath()+"/index";
 	}
+	
 }
