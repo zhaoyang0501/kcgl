@@ -63,9 +63,9 @@
                 Site Logo start
 
                 //-->
-                <a href="index.html">
+                <a href="${pageContext.request.contextPath}/index.html">
                 <div class="envor-logo">
-                  <img src="img/site-logo.png" alt="Envor Logo">
+                  <img src="${pageContext.request.contextPath}/img/site-logo.png" alt="Envor Logo">
                   <p class="logo" style="width: 330px;">VON爱火锅店！</p>
                 <!--
 
@@ -88,7 +88,7 @@
                       <a href="project">餐桌预定</a>
                     </li>
                     <li>
-                      <a href="project">最新菜单</a>
+                      <a href="foodcategory">最新菜单</a>
                     </li>
                       <li>
                       <a href="center">个人中心</a>

@@ -1,4 +1,4 @@
-package hotpot.admin.entity;
+package hotpot.sys.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;

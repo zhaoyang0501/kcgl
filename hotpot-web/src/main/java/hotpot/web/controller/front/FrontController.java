@@ -1,10 +1,6 @@
 package hotpot.web.controller.front;
-import hotpot.core.entity.User;
-import hotpot.core.service.UserService;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -15,7 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import hotpot.core.entity.User;
+import hotpot.core.service.UserService;
+import hotpot.sys.entity.FrontUser;
+import hotpot.sys.service.FoodService;
+import hotpot.sys.service.FrontUserService;
 /***
  * 前台，首页各种连接登陆等
  * @author qq:263608237
@@ -28,6 +31,12 @@ public class FrontController {
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private FrontUserService frontUserService;
+	
+	
+	@Autowired
+	private FoodService foodService;
 	
 	@InitBinder  
 	protected void initBinder(HttpServletRequest request,   ServletRequestDataBinder binder) throws Exception {   
@@ -42,11 +51,21 @@ public class FrontController {
 	public String index(Model model) {
 		return "index";
 	}
-	@RequestMapping("food")
-	public String food(Model model) {
+	
+	@RequestMapping("foodcategory")
+	public String foodcategory(Model model) {
+		model.addAttribute("categorys",foodService.findAllCategory());
+		model.addAttribute("foods",foodService.findAll());
 		return "food";
 	}
-
+	
+	@RequestMapping("foodcategory/{id}")
+	public String foodcategory(@PathVariable Long id,Model model) {
+		model.addAttribute("categorys",foodService.findAllCategory());
+		model.addAttribute("foods",foodService.findAll());
+		model.addAttribute("id",id);
+		return "food";
+	}
 	/***
 	 * 关于我们
 	 * @return
@@ -79,10 +98,10 @@ public class FrontController {
 	 * @return
 	 */
 	@RequestMapping("doregister")
-	public String register(User user,Model model) {
+	public String register(FrontUser user,Model model) {
 		user.setCreateDate(new Date());
 		model.addAttribute("tip","注册成功请登录！");
-		userService.save(user);
+		frontUserService.save(user);
 		return "login";
 	}
 	/***
@@ -116,7 +135,7 @@ public class FrontController {
 	 */
 	@RequestMapping("dologin")
 	public String dologin(User user,HttpSession httpSession,Model model) {
-		User loginuser=userService.login(user.getUsername(), user.getPassword());
+		User loginuser=frontUserService.login(user.getUsername(), user.getPassword());
     	if(loginuser!=null){
     		httpSession.setAttribute("user", loginuser);
             return "index"; 

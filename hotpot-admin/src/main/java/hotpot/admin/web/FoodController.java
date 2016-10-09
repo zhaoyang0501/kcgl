@@ -1,12 +1,12 @@
 package hotpot.admin.web;
 
-import hotpot.admin.entity.Food;
-import hotpot.admin.service.FoodService;
-import hotpot.common.web.AbstractBaseCURDController;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import hotpot.common.web.AbstractBaseCURDController;
+import hotpot.sys.entity.Food;
+import hotpot.sys.service.FoodService;
 
 @Controller
 @RequestMapping("sys/food")

@@ -92,6 +92,7 @@
                         <ul class="nav nav-second-level">
                             <li><a class="J_menuItem" href="sys/user/index">员工管理</a></li>
                             <li><a class="J_menuItem" href="sys/food/index">菜品管理</a></li>
+                             <li><a class="J_menuItem" href="sys/order/index">预定管理</a></li>
                         </ul>
                     </li>
                 </ul>

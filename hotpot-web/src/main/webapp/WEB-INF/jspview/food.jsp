@@ -17,25 +17,25 @@
     <title>Envor HTML5/CSS3 Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
-    <link href="css/animate.css" rel="stylesheet" type="text/css">
-    <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
-    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/colorbox-skins/4/colorbox.css" type="text/css">
-        <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/colorbox-skins/4/colorbox.css" type="text/css">
+        <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" type="text/css">
     
 
-    <link href="css/header/h1.css" rel="stylesheet" type="text/css">
-    <link href="css/responsive.css" rel="stylesheet" type="text/css">
-    <link href="css/color1.css" rel="stylesheet" type="text/css" id="envor-site-color">
-    <link href="css/rivathemes.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/header/h1.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/color1.css" rel="stylesheet" type="text/css" id="envor-site-color">
+    <link href="${pageContext.request.contextPath}/css/rivathemes.css" rel="stylesheet" type="text/css">
 
     <!-- LayerSlider styles -->
-    <link rel="stylesheet" href="css/layerslider/css/layerslider.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layerslider/css/layerslider.css" type="text/css">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
-    <!--[if lt IE 9]><script src="js/vendor/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="${pageContext.request.contextPath}/js/vendor/ie8-responsive-file-warning.js"></script><![endif]-->
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -43,7 +43,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     
     <style type="text/css">
     .active a{
@@ -79,8 +79,8 @@
         <div class="container">
           <div class="row" style="margin-top: 0px;">
             <div class="col-lg-12">
-              <p class="block-description">家务帮的会员服务</p>
-              <p>加入家务帮会员，您还享受专属的家庭管家1对1服务，更有优先安排、更换阿姨、福利赠送等各种特权。</p>
+              <p class="block-description">丰富的菜品，任您挑选</p>
+              <p>加入VON火锅店会员，您还享受专属VIP服务，更有优先安排、座位保留、福利赠送等各种特权。</p>
               <div class="envor-sorting" id="portfolio-sorting">
                 <!--
 
@@ -89,10 +89,10 @@
                 //-->
 
                 <div class="envor-sorting-filters"><span  id='span_all' data-value="*" 
-                ${category==null?"class='active'":"" }
-                ><a  href="project">全部</a> </span>
-                 <c:forEach items="${cagegorys }" var="bean">
-                   <span data-value="html" id='span_${bean.id }'><a  href="project?cid=${bean.id }">${bean.name }</a> </span>
+                ${id==null?"class='active'":"" }
+                ><a  href="category">全部</a> </span>
+                 <c:forEach items="${categorys }" var="bean">
+                   <span ${id==bean.id?"class='active'":"" } data-value="html" id='span_${bean.id }'><a  href="${pageContext.request.contextPath}/foodcategory/${bean.id }">${bean.name }</a> </span>
                  </c:forEach>
                 </div>
                 <!--
@@ -104,14 +104,16 @@
                   <div class="col-lg-12">
                   <div class="envor-projects-listing envor-projects-listing-5-cols" style="margin-left: -30px; width: 1170px;">
 					
-					<c:forEach items="${projects }" var="bean">
+					<c:forEach items="${foods }" var="bean">
 						<article class="envor-project envor-padding-bottom-30 envor-padding-left-30 javascript html envor-sorting-item envor-listing-item" style="width: 234px;">
 		                      <div class="envor-project-inner">
-		                        <figure><a href=""><img src="http://www.jiawubang.me/Uploads/Picture/2015/05/29/JWB.XQytgb47c6ba5b22Zc6J.jpg_280_200.jpg" alt=""></a><figcaption style="display: none;"><a href="http://www.jiawubang.me/Uploads/Picture/2015/05/29/JWB.XQytgb47c6ba5b22Zc6J.jpg_280_200.jpg" title="Morbi sagittis lacinia" class="colorbox cboxElement"><i class="fa fa-plus" style="top: 0px;"></i></a></figcaption></figure>
+		                        <figure><a href=""><img style="width: 200px" src="${pageContext.request.contextPath}/upload/${bean.img }" alt=""></a><figcaption style="display: none;"><a href="${pageContext.request.contextPath}/upload/${bean.img }" title="Morbi sagittis lacinia" class="colorbox cboxElement"><i class="fa fa-plus" style="top: 0px;"></i></a></figcaption></figure>
+		                        
 		                        <div class="envor-project-details">
-		                         <p class="link"><a href="viewproject?id=${bean.id }">${bean.name }</a></p>
-		                          <p class="filter" ><h3 style="color: red">${bean.price }元/小时</h3></p>
+		                          <p class="link"><a href="${pageContext.request.contextPath}/viewcategory?id=${bean.id }">${bean.name }</a></p>
+		                          <p class="filter" ><h3 style="color: red">${bean.price }元</h3></p>
 		                        </div>
+		                      
 		                      </div>
                    		 </article>
 					</c:forEach>
@@ -162,27 +164,27 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-        <script src="js/vendor/jquery-1.11.0.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendor/jquery-1.11.0.min.js"></script>
 
-    <script src="js/vendor/core-1.0.5.js"></script>
+    <script src="${pageContext.request.contextPath}/js/vendor/core-1.0.5.js"></script>
 
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.mCustomScrollbar.min.js"></script>
-    <script src="js/jquery.mousewheel.min.js"></script>
-    <script src="js/jquery.colorbox-min.js"></script>
-    <script src="js/preloadCssImages.jQuery_v5.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.mCustomScrollbar.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.mousewheel.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.colorbox-min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/preloadCssImages.jQuery_v5.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.stellar.min.js"></script>
     <!--
     * jQuery with jQuery Easing, and jQuery Transit JS
     //-->
-    <script src="js/layerslider/jquery-easing-1.3.js" type="text/javascript"></script>
-    <script src="js/layerslider/jquery-transit-modified.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/layerslider/jquery-easing-1.3.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/layerslider/jquery-transit-modified.js" type="text/javascript"></script>
     <!--
     * LayerSlider from Kreatura Media with Transitions
     -->
-    <script src="js/layerslider/layerslider.transitions.js" type="text/javascript"></script>
-    <script src="js/layerslider/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
-    <script src="js/jquery.rivathemes.js"></script>
+    <script src="${pageContext.request.contextPath}/js/layerslider/layerslider.transitions.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/layerslider/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.rivathemes.js"></script>
     <script type="text/javascript">
       $('document').ready(function() {
     	  $("#span_${category.id}").addClass("active");
@@ -240,7 +242,7 @@
           });
       });
     </script>
-    <script src="js/envor.js"></script>
+    <script src="${pageContext.request.contextPath}/js/envor.js"></script>
     <script type="text/javascript">
       $('document').ready(function() {
           /*
