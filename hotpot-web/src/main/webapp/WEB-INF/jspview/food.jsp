@@ -110,7 +110,7 @@
 		                        <figure><a href=""><img style="width: 200px" src="${pageContext.request.contextPath}/upload/${bean.img }" alt=""></a><figcaption style="display: none;"><a href="${pageContext.request.contextPath}/upload/${bean.img }" title="Morbi sagittis lacinia" class="colorbox cboxElement"><i class="fa fa-plus" style="top: 0px;"></i></a></figcaption></figure>
 		                        
 		                        <div class="envor-project-details">
-		                          <p class="link"><a href="${pageContext.request.contextPath}/viewcategory?id=${bean.id }">${bean.name }</a></p>
+		                          <p class="link"><a href="${pageContext.request.contextPath}/viewfood/${bean.id }">${bean.name }</a></p>
 		                          <p class="filter" ><h3 style="color: red">${bean.price }元</h3></p>
 		                        </div>
 		                      

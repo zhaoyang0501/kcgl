@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import hotpot.core.entity.User;
 import hotpot.core.service.UserService;
 import hotpot.sys.entity.FrontUser;
+import hotpot.sys.entity.Msg;
 import hotpot.sys.entity.Order;
 import hotpot.sys.service.FoodService;
 import hotpot.sys.service.FrontUserService;
+import hotpot.sys.service.MsgService;
 import hotpot.sys.service.OrderService;
 /***
  * 前台，首页各种连接登陆等
@@ -41,6 +43,9 @@ public class FrontController {
 	
 	@Autowired
 	private FoodService foodService;
+	
+	@Autowired
+	private MsgService msgService;
 	
 	@InitBinder  
 	protected void initBinder(HttpServletRequest request,   ServletRequestDataBinder binder) throws Exception {   
@@ -89,6 +94,23 @@ public class FrontController {
 		model.addAttribute("foods",foodService.findAll());
 		model.addAttribute("id",id);
 		return "food";
+	}
+	
+	@RequestMapping("viewfood/{id}")
+	public String viewfood(@PathVariable Long id,Model model) {
+		model.addAttribute("food",foodService.find(id));
+		model.addAttribute("msgs",msgService.findByFood(id));
+		model.addAttribute("id",id);
+		return "viewfood";
+	}
+	
+	@RequestMapping("foodmsg")
+	public String viewfood(Msg msg,Model model,HttpSession httpSession) {
+		FrontUser user=(FrontUser)httpSession.getAttribute("user");
+		msg.setFrontUser(user);
+		msg.setState("1");
+		msgService.save(msg);
+		return "redirect:/viewfood/"+msg.getFood().getId();
 	}
 	/***
 	 * 关于我们

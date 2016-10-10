@@ -17,24 +17,24 @@
     <title>Envor HTML5/CSS3 Template</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
-    <link href="css/animate.css" rel="stylesheet" type="text/css">
-    <link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
-    <link href="css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="css/colorbox-skins/4/colorbox.css" type="text/css">
-        <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/animate.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/colorbox-skins/4/colorbox.css" type="text/css">
+        <link href="${pageContext.request.contextPath}/css/main.css" rel="stylesheet" type="text/css">
    
      <link href=" http://demo.htmleaf.com/1503/201503041714/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css">
     <link href=" http://demo.htmleaf.com/1503/201503041714/css/bootstrap-datetimepicker.css" rel="stylesheet" type="text/css">
   
-    <link href="css/header/h1.css" rel="stylesheet" type="text/css">
-    <link href="css/responsive.css" rel="stylesheet" type="text/css">
-    <link href="css/color1.css" rel="stylesheet" type="text/css" id="envor-site-color">
-    <link href="css/rivathemes.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/header/h1.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/responsive.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/css/color1.css" rel="stylesheet" type="text/css" id="envor-site-color">
+    <link href="${pageContext.request.contextPath}/css/rivathemes.css" rel="stylesheet" type="text/css">
 
     <!-- LayerSlider styles -->
-    <link rel="stylesheet" href="css/layerslider/css/layerslider.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/layerslider/css/layerslider.css" type="text/css">
 
     <!-- Just for debugging purposes. Don't actually copy this line! -->
     <!--[if lt IE 9]><script src="js/vendor/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -64,7 +64,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="envor-desktop-breadscrubs-inner">
-                <a href="index.html">首页</a><i class="fa fa-angle-double-right"></i>家务预约
+                <a href="${pageContext.request.contextPath}/index.html">首页</a><i class="fa fa-angle-double-right"></i>家务预约
               </div>
             </div>
           </div>
@@ -133,16 +133,16 @@
 
                 //-->
                 <div class="col-lg-9">
-                  <h3 style="margin-top: 0px;">${bean.name }</h3>
-                  <p class="price">￥${bean.price }</p>
+                  <h3 style="margin-top: 0px;">${food.name }</h3>
+                  <p class="price">￥${food.price }</p>
                     <form class="envor-f1" action="submitorder" method="post">
                     <input type="hidden"  name='pid' value='${bean.id }'>
-                    <p><label for="rt1-fax">服务时间</label><input type="text"  name='orderTime'></p>
-                 <p><label for="rt1-fax">预约日期</label><input type="text"  id='orderDate' name='orderDate'></p>
+                    <p><label for="rt1-fax">菜品名称</label>${food.name }</p>
+                         <p><label for="rt1-fax">价格</label>${food.price }</p>
+                 <p><label for="rt1-fax">描述</label>${food.remark }</p>
                
-                  <p><label for="rt1-fax">备注</label><input type="text"  name='remark'></p>
-                  <p><label for="rt1-fax">服务地址</label><input type="text"  name='addr'></p>
-                  <p><input type="submit" value="提交订单" class="envor-btn envor-btn-normal envor-btn-primary"></p>
+             
+                  
                 </form>
                    </div>
               </div>
@@ -153,10 +153,36 @@
 
                 //-->
                 <div class="col-lg-12">
-                  <h3 class="h3-2" style="margin-top: 0px;">product details</h3>
-                  <div>
-                  ${bean.remark }
-                  </div>
+                  <h3 class="h3-2" style="margin-top: 0px;">留言评论</h3>
+                  
+             	 <div class="envor-comments-list">
+               
+	                <div class="envor-comment">
+	                  
+	                  <c:forEach items="${msgs }"  var="bean">
+	                  	 <div class="inner">
+	                   	 	<figure><img src="${pageContext.request.contextPath}/img/img2.png" alt=""></figure>
+	                    	<p class="meta"><span class="author"><a href="">${bean.frontUser.name }</a> says:</span> <span class="date">发表于：${bean.createDate }</span></p>
+	                    	<div class="entry">${bean.body }</div>
+	                 	 </div>
+	                  </c:forEach>
+	                </div>
+            		
+              </div>
+              
+              
+              <div class="envor-add-comment">
+                <form class="envor-f1" method="post" action="${pageContext.request.contextPath}/foodmsg">
+                  <input type="hidden" name="food.id" value="${food.id }"/>
+                  <p><label for="comment-name">昵称*</label><input type="text" placeholder="Your name" id="comment-name"></p>
+                  <p><label for="comment-entry">评论*:</label>
+                    <textarea name='body' id="comment-entry" placeholder="Place a comment here..."></textarea>
+                  </p>
+                  <p><input type="submit" value="发表" class="envor-btn envor-btn-normal envor-btn-primary"></p>
+                </form>
+              </div>
+              
+              
                 </div>
               <!--
 
@@ -164,6 +190,8 @@
 
               //-->
               </div>
+              
+              
             </div>
             
             </div>
@@ -182,27 +210,27 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-        <script src="js/vendor/jquery-1.11.0.min.js"></script>
+        <script src="${pageContext.request.contextPath}/js/vendor/jquery-1.11.0.min.js"></script>
 
-    <script src="js/vendor/core-1.0.5.js"></script>
+    <script src="${pageContext.request.contextPath}/js/vendor/core-1.0.5.js"></script>
 
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.mCustomScrollbar.min.js"></script>
-    <script src="js/jquery.mousewheel.min.js"></script>
-    <script src="js/jquery.colorbox-min.js"></script>
-    <script src="js/preloadCssImages.jQuery_v5.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.mCustomScrollbar.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.mousewheel.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.colorbox-min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/preloadCssImages.jQuery_v5.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.stellar.min.js"></script>
     <!--
     * jQuery with jQuery Easing, and jQuery Transit JS
     //-->
-    <script src="js/layerslider/jquery-easing-1.3.js" type="text/javascript"></script>
-    <script src="js/layerslider/jquery-transit-modified.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/layerslider/jquery-easing-1.3.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/layerslider/jquery-transit-modified.js" type="text/javascript"></script>
     <!--
     * LayerSlider from Kreatura Media with Transitions
     -->
-    <script src="js/layerslider/layerslider.transitions.js" type="text/javascript"></script>
-    <script src="js/layerslider/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
-    <script src="js/jquery.rivathemes.js"></script>
+    <script src="${pageContext.request.contextPath}/js/layerslider/layerslider.transitions.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/layerslider/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.rivathemes.js"></script>
     <script type="text/javascript">
     $('document').ready(function() {
         /*
@@ -231,7 +259,7 @@
 
           */
           $('#layerslider').layerSlider({
-            skinsPath               : 'css/layerslider/skins/',
+            skinsPath               : '${pageContext.request.contextPath}/css/layerslider/skins/',
             skin : 'fullwidth',
             thumbnailNavigation : 'hover',
             hoverPrevNext : false,
@@ -279,7 +307,7 @@
           });
       });
     </script>
-    <script src="js/envor.js"></script>
+    <script src="${pageContext.request.contextPath}/js/envor.js"></script>
     <script type="text/javascript">
       $('document').ready(function() {
           /*

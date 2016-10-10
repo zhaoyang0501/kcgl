@@ -20,8 +20,17 @@ public class FrontUser extends BaseEntity<Long> implements Serializable{
 	private String password;
 	private String email;
 	private String tel;
+	private String sex;
 	private String grade;
 	private String address;
+	
+	
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
 	public String getName() {
 		return name;
 	}

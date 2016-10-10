@@ -67,10 +67,10 @@
                             <li><a class="J_menuItem" href="sys/food/index">菜品管理</a></li>
                             <li><a class="J_menuItem" href="sys/order/index">预定管理</a></li>
                             <li><a class="J_menuItem" href="sys/order/index">开台/点菜/结账</a></li>
-                             <li><a class="J_menuItem" href="sys/order/index">注册会员管理</a></li>
-                             <li><a class="J_menuItem" href="sys/order/index">留言管理</a></li>
-                             <li><a class="J_menuItem" href="sys/order/index">公告管理</a></li>
-                             <li><a class="J_menuItem" href="sys/order/index">公告发布</a></li>
+                             <li><a class="J_menuItem" href="sys/frontuser/index">注册会员管理</a></li>
+                             <li><a class="J_menuItem" href="sys/msg/index">留言管理</a></li>
+                             <li><a class="J_menuItem" href="sys/news/index">公告管理</a></li>
+                             <li><a class="J_menuItem" href="sys/news/create">公告发布</a></li>
                              <li><a class="J_menuItem" href="sys/order/index">盈利统计</a></li>
                         </ul>
                     </li>
