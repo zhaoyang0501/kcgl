@@ -15,4 +15,8 @@ public class FrontUserService extends SimpleCurdService<FrontUser, Long> {
 	public FrontUser login(String username,String password){
 		return  this.frontUserRepository.findByUsernameAndPassword(username, password);
 	}
+	
+	public FrontUser findByUserName(String username){
+		return frontUserRepository.findByUsername(username);
+	}
 }

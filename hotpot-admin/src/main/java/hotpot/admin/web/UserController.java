@@ -8,13 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import hotpot.common.web.AbstractBaseCURDController;
 import hotpot.core.entity.Role;
 import hotpot.core.entity.User;
 import hotpot.core.service.UserService;
-
-
 
 @Controller
 @RequestMapping("sys/user")

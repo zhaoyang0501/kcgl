@@ -66,7 +66,7 @@
                             <li><a class="J_menuItem" href="sys/user/index">员工管理</a></li>
                             <li><a class="J_menuItem" href="sys/food/index">菜品管理</a></li>
                             <li><a class="J_menuItem" href="sys/order/index">预定管理</a></li>
-                            <li><a class="J_menuItem" href="sys/order/index">开台/点菜/结账</a></li>
+                            <li><a class="J_menuItem" href="sys/seat/index">开台/点菜/结账</a></li>
                              <li><a class="J_menuItem" href="sys/frontuser/index">注册会员管理</a></li>
                              <li><a class="J_menuItem" href="sys/msg/index">留言管理</a></li>
                              <li><a class="J_menuItem" href="sys/news/index">公告管理</a></li>
