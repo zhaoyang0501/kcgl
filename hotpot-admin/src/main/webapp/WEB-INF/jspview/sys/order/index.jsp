@@ -164,13 +164,12 @@
     		});
      }
     
-    function fun_delete(id){
-    	
-    	layer.confirm('确定删除当前员工？', {
+    function fun_pass(id){
+    	layer.confirm('确定通过当前预定？', {
     		  btn: ['确定','取消'] //按钮
     		}, function(){
     			$.ajax({
-    		 		   url:  $.common.getContextPath() + "/sys/order/delete?id="+id,
+    		 		   url:  $.common.getContextPath() + "/sys/order/pass?id="+id,
     		 		   success: function(msg){
     		 		     if(msg.code==1){
     		 		    	 toastr.success('操作成功');
@@ -182,10 +181,25 @@
     		}, function(){
     			 layer.closeAll() ;
     		});
-    	
-    	
      }
-    
+    function fun_nopass(id){
+    	layer.confirm('确定取消当前预定？', {
+    		  btn: ['确定','取消'] //按钮
+    		}, function(){
+    			$.ajax({
+    		 		   url:  $.common.getContextPath() + "/sys/order/nopass?id="+id,
+    		 		   success: function(msg){
+    		 		     if(msg.code==1){
+    		 		    	 toastr.success('操作成功');
+    		 		    	 table.draw();
+    		 		     }
+    		 		     layer.closeAll() ;
+    		 		   }
+    		 	});
+    		}, function(){
+    			 layer.closeAll() ;
+    		});
+     }
     function fun_update(id){
     	$.ajax({
  		   url:  $.common.getContextPath() + "/sys/order/get?id="+id,
@@ -253,10 +267,24 @@
 					"data" : "id",
 				}] ,
 				 "columnDefs": [
+						 {
+							    "render": function ( data, type, row ) {
+							        if(data=='1'){
+							        	return "<span class='label label-danger'>待审核</span>";
+							        }else if(data=='2'){
+							        	return "<span class='label label-primary'>预定成功</span>";
+							        }else if(data=='3'){
+							        	return "<span class='label label-primary'>客户取消 </span>";
+							        }else if(data=='4'){
+							        	return "<span class='label label-primary'>客户取消 </span>";
+							        }
+							    },
+							    "targets":5
+							},
 				                {
 				                    "render": function ( data, type, row ) {
-				                        return "<a tager='_blank' href='javascript:void(0)' onclick='fun_delete("+data+")'>通过 </a>"+
-				                        "<a tager='_blank' href='javascript:void(0)' onclick='fun_update("+data+")'>取消 </a>";
+				                        return "<a tager='_blank' href='javascript:void(0)' onclick='fun_pass("+data+")'>通过 </a>"+
+				                        "<a tager='_blank' href='javascript:void(0)' onclick='fun_nopass("+data+")'>取消 </a>";
 				                    },
 				                    "targets":6
 				                }

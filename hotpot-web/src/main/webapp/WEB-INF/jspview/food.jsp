@@ -90,7 +90,7 @@
 
                 <div class="envor-sorting-filters"><span  id='span_all' data-value="*" 
                 ${id==null?"class='active'":"" }
-                ><a  href="category">全部</a> </span>
+                ><a  href="${pageContext.request.contextPath}/foodcategory">全部</a> </span>
                  <c:forEach items="${categorys }" var="bean">
                    <span ${id==bean.id?"class='active'":"" } data-value="html" id='span_${bean.id }'><a  href="${pageContext.request.contextPath}/foodcategory/${bean.id }">${bean.name }</a> </span>
                  </c:forEach>
@@ -107,7 +107,7 @@
 					<c:forEach items="${foods }" var="bean">
 						<article class="envor-project envor-padding-bottom-30 envor-padding-left-30 javascript html envor-sorting-item envor-listing-item" style="width: 234px;">
 		                      <div class="envor-project-inner">
-		                        <figure><a href=""><img style="width: 200px" src="${pageContext.request.contextPath}/upload/${bean.img }" alt=""></a><figcaption style="display: none;"><a href="${pageContext.request.contextPath}/upload/${bean.img }" title="Morbi sagittis lacinia" class="colorbox cboxElement"><i class="fa fa-plus" style="top: 0px;"></i></a></figcaption></figure>
+		                        <figure><a href=""><img style="width: 200px" src="http://127.0.0.1:8080/${pageContext.request.contextPath}/upload/${bean.img }" alt=""></a><figcaption style="display: none;"><a href="http://127.0.0.1:8080/${pageContext.request.contextPath}/upload/${bean.img }" title="Morbi sagittis lacinia" class="colorbox cboxElement"><i class="fa fa-plus" style="top: 0px;"></i></a></figcaption></figure>
 		                        
 		                        <div class="envor-project-details">
 		                          <p class="link"><a href="${pageContext.request.contextPath}/viewfood/${bean.id }">${bean.name }</a></p>

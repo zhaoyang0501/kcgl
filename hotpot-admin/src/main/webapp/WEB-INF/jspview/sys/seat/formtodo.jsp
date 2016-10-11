@@ -9,24 +9,97 @@
     <div class="wrapper wrapper-content animated fadeInRight">
        <div class="row">
             <div class="col-sm-12">
-                <div class="ibox ">
-                    
-                    <div class="ibox-content ">
-                         <table ID='dt_table_view' class="table table-striped table-bordered table-hover ">
-                            <thead>
-                                <tr>
-									<th>桌号</th>
-									<th>开台时间</th>
-									<th>状态</th>
-									<th>操作</th>
-								</tr>
-                            </thead>
-                       		 <tbody>
-                            </tbody>
-                          </table>
-                    </div>
-                    
-                </div>
+                
+                 <div class="clients-list">
+                            
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" href="#tab-1"><i class="fa fa-user"></i> 待处理订单</a>
+                                </li>
+                                <li class=""><a data-toggle="tab" href="#tab-2"><i class="fa fa-briefcase"></i> 已处理订单</a>
+                                </li>
+                            </ul>
+                            
+                            <div class="tab-content">
+                                <div id="tab-1" class="tab-pane active">
+                                    <div class="slimScrollDiv" style="position: relative; width: auto; height: 100%;"><div class="full-height-scroll" style="width: auto; height: 100%;">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover">
+                                                <tbody>
+                                                	<c:forEach items="${todos}" var="form">
+                                                	<tr>
+                                                	  <td> ${form.createDate }</td>
+                                                        <td >${form.user.name }(${form.user.username }) </td>
+                                                        <td><a data-toggle="tab" href="#contact-1" class="client-link">${form.seatName } 桌</a>
+                                                        </td>
+                                                        <td> ${form.price }</td>
+                                                         <td> <span class='label label-danger'>未完成</span></td>
+                                                        <td> <a tager='_blank' href='javascript:void(0)' onclick='fun_check(${form.id})'>查看 </a></td>
+                                                    </tr>
+                                                	</c:forEach>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div><div class="slimScrollBar" style="width: 4px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 365.112px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
+                                </div>
+                                
+                                
+                                <div id="tab-2" class="tab-pane">
+                                   <form id='_form_check'>
+                                   	<input type="hidden" value="1" name="id" />
+                                    <div class="slimScrollDiv" style="position: relative; width: auto; height: 100%;"><div class="full-height-scroll" style="width: auto; height: 100%;">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-hover">
+                                                <tbody>
+	                                                   <c:forEach items="${foods}" var="food"   varStatus="status">
+	                                                   	<input type="hidden" value="${food.id }" name="foodItems[${status.index }].food.id" />
+	                                                	<tr>
+	                                                	   <td ><img alt="image"  style="height: 60px" src="${pageContext.request.contextPath}/upload/${food.img}"> </td>
+	                                                        <td><a data-toggle="tab" href="#contact-1" class="client-link">${food.name }</a>
+	                                                        </td>
+	                                                        <td> 
+	                                                        	 <input type="text"  name="foodItems[${status.index }].num" class="form-control" value="1" size="2"> 
+															</td>
+	                                                        
+	                                                        <td> </td>
+	                                                    </tr>
+	                                                	</c:forEach>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        
+                                        <table class="table invoice-total">
+				                        <tbody>
+				                            <tr>
+				                                <td><strong>总价：</strong>
+				                                </td>
+				                                <td>¥</td>
+				                            </tr>
+				                            <tr>
+				                                <td><strong>折扣：</strong>
+				                                </td>
+				                                <td>¥0.00</td>
+				                            </tr>
+				                            <tr>
+				                                <td><strong>总计</strong>
+				                                </td>
+				                                <td>¥</td>
+				                            </tr>
+				                        </tbody>
+				                    </table>
+                               		<div class="text-right">
+			                        	<button onclick="fun_gocheck()" class="btn btn-primary"><i class="fa fa-dollar"></i> 去付款</button>
+			                    	</div>
+                                        
+                                        
+                                     </div>
+                                     </div>
+                                    </form>
+                                   </div>
+                                </div><!-- tab context -->
+                            </div>
+                
+                
             </div>
         </div>
    </div>
@@ -74,7 +147,7 @@
                                     <div class="slimScrollDiv" style="position: relative; width: auto; height: 100%;"><div class="full-height-scroll" style="width: auto; height: 100%;">
                                         <div class="table-responsive">
                                             <table class="table table-striped table-hover">
-                                                <tbody id='cashed'>
+                                                <tbody>
 	                                                   <c:forEach items="${foods}" var="food"   varStatus="status">
 	                                                   	<input type="hidden" value="${food.id }" name="foodItems[${status.index }].food.id" />
 	                                                	<tr>
@@ -92,11 +165,16 @@
                                             </table>
                                         </div>
                                         
-                                        
-                               		<div class="text-right">
-			                        	<button onclick="fun_gocheck()" class="btn btn-primary"><i class="fa fa-dollar"></i> 提交</button>
-			                    	</div>
-                                        
+                                        <table class="table invoice-total">
+				                        <tbody>
+				                            <tr>
+				                                <td><strong>总价：</strong>
+				                                </td>
+				                                <td>¥</td>
+				                            </tr>
+				                        </tbody>
+				                    </table>
+                               		
                                         
                                      </div>
                                      </div>
@@ -268,28 +346,7 @@
  		   url:  $.common.getContextPath() + "/sys/seat/additem?formid="+thisid+"&foodid="+id,
  		   success: function(msg){
  		     if(msg.code==1){
- 		    	toastr.success('加入菜篮成功');
- 		    	$("#cashed").empty();
- 		    	$.ajax({
- 		  		   url:  $.common.getContextPath() + "/sys/seat/precheck?formid="+thisid,
- 		  		   success: function(msg){
- 		  		     if(msg.code==1){
- 		  		    	for(i=0;i<msg.datas.foodItem.length;i++){
- 		  		    		$("#cashed").append("<tr> <input type='hidden' value='"+msg.datas.foodItem[i].food.id+"' name='foodItems["+i+"].food.i' />"+
-			                        	""+
-			                     	   "<td ><img alt='image'  style='height: 60px' src='${pageContext.request.contextPath}/upload/"+msg.datas.foodItem[i].food.img+"'> </td>"+
-			                           "  <td><a data-toggle='tab' href='#contact-1' class='client-link'>"+msg.datas.foodItem[i].food.name+"</a>"+
-			                            " </td>"+
-			                           "  <td> "+
-			                            " 	 <input type='text' style='width: 40px' name='foodItems["+i+"].num' class='form-control' value='"+msg.datas.foodItem[i].num+"' size='2'> "+
-										"	</td>"+
-			                             "<td> </td> "+
-			                           " </tr>");
- 		  		    	}
- 		  		     }
- 		  		   }
- 		  		});
- 		    	 
+ 		    	 toastr.success('加入菜篮成功');
  		     }
  		     
  		   }

@@ -25,6 +25,8 @@ public class Form extends BaseEntity<Long>{
 	
 	private String seatName;
 	
+	/**1新建 2完成 */
+	private String state="1";
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "form")
 	private Set<FoodItem> foodItem = new HashSet<FoodItem>();
 	
@@ -35,6 +37,14 @@ public class Form extends BaseEntity<Long>{
 
 	public void setFoodItem(Set<FoodItem> foodItem) {
 		this.foodItem = foodItem;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
 	}
 
 	public String getSeatName() {

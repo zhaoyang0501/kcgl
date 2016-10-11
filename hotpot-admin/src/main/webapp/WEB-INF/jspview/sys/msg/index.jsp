@@ -85,7 +85,7 @@
     }
     
     function fun_delete(id){
-    	layer.confirm('确定删除当前公告？', {
+    	layer.confirm('确定删除当前留言？', {
     		  btn: ['确定','取消'] //按钮
     		}, function(){
     			$.ajax({

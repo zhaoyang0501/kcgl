@@ -18,8 +18,8 @@
 					<div class="ibox-content">
 						<form role="form" class="form-inline">
 							<div class="form-group">
-								<label for="exampleInputEmail2" class="sr-only">姓名</label> <input
-									type="text" placeholder="姓名" id="_name" class="form-control">
+								<label for="exampleInputEmail2" class="sr-only">名称</label> <input
+									type="text" placeholder="名称" id="_name" class="form-control">
 							</div>
 							<button class="btn btn-primary" type="button" id='_search'>查询</button>
 							<button class="btn btn-primary" type="button" id='_new'>新建</button>
@@ -295,7 +295,7 @@
         		} 
         	 } ).on('preXhr.dt', function ( e, settings, data ) {
 		        	data.value = $("#_name").val();
-		        	data.columnname = 'chinesename';
+		        	data.columnname = 'name';
 		        	return true;
 		     } ).on('xhr.dt', function ( e, settings, json, xhr ) {
 		    		 $(".dataTables_processing").hide();	

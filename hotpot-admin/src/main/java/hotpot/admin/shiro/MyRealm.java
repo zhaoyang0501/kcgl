@@ -2,6 +2,7 @@ package hotpot.admin.shiro;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.ShiroException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -17,6 +18,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import hotpot.core.entity.Role;
 import hotpot.core.entity.User;
 import hotpot.core.service.UserService;
 
@@ -32,16 +34,11 @@ public class MyRealm extends AuthorizingRealm {
 		User user = userService.findByUsername(currentUsername);
 		List<String> roleList = new ArrayList<String>();
 		List<String> permissionList = new ArrayList<String>();
-		/*List<UserRole> userroles = userRoleService.queryUserRole(u.getId());
-		if(!CollectionUtils.isEmpty(userroles)){
-			for (UserRole role : userroles) {
-				roleList.add(role.getRolename());
-				List<RoleRights> roleRightss = roleRightsService.queryByRole(role.getRoleid());
-				for(RoleRights roleRights:roleRightss){
-					permissionList.add(rightsService.findOne(roleRights.getRightsId()).getName());
-				}
+		if(!CollectionUtils.isEmpty(user.getRoles())){
+			for (Role role : user.getRoles()) {
+				roleList.add(role.getCode());
 			}
-		}*/
+		}
 		
 		SimpleAuthorizationInfo simpleAuthorInfo = new SimpleAuthorizationInfo();
 		simpleAuthorInfo.addRoles(roleList);

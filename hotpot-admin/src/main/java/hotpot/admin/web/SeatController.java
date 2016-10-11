@@ -118,7 +118,7 @@ public class SeatController extends AbstractBaseCURDController<Seat,Long>  {
 			totalprice+=item.getNum()*item.getPrice();
 		}
 		form.setPrice(totalprice);
-		
+		form.setState("2");
 		Seat seat = getSimpleCurdService().findByName(form.getSeatName());
 		seat.setState("2");
 		seat.setForm(null);
@@ -191,6 +191,14 @@ public class SeatController extends AbstractBaseCURDController<Seat,Long>  {
 		model.addAttribute("foods", this.foodService.findAll());
 		return this.getBasePath()+"/index";
 	}
+	
+	@RequestMapping("formtodo")
+	public String formtodo(Model model) {
+		model.addAttribute("todos",formService.findByState("1"));
+		model.addAttribute("dones",formService.findByState("2"));
+		return this.getBasePath()+"/formtodo";
+	}
+	
 	
 	private Boolean isFoodInForm(Form form,Food food){
 		if(form.getFoodItem()!=null){

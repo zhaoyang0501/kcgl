@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import hotpot.common.dto.json.DataTableResponse;
+import hotpot.common.dto.json.FailedResponse;
 import hotpot.common.dto.json.Response;
+import hotpot.common.dto.json.SuccessResponse;
 import hotpot.common.web.AbstractBaseCURDController;
 import hotpot.sys.entity.Order;
 import hotpot.sys.service.OrderService;
@@ -31,6 +33,24 @@ public class OrderController extends AbstractBaseCURDController<Order,Long>{
 	@Override
 	public OrderService getSimpleCurdService() {
 		return (OrderService)super.getSimpleCurdService();
+	}
+	
+	@RequestMapping("pass")
+	@ResponseBody
+	public Response pass(Long id) {
+		Order order = this.simpleCurdService.find(id);
+		order.setState("2");
+		simpleCurdService.save(order);
+		return new SuccessResponse();
+	}
+	
+	@RequestMapping("nopass")
+	@ResponseBody
+	public Response nopass(Long id) {
+		Order order = this.simpleCurdService.find(id);
+		order.setState("4");
+		simpleCurdService.save(order);
+		return new SuccessResponse();
 	}
 	
 	@Override

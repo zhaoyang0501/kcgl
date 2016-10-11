@@ -22,6 +22,7 @@ import hotpot.sys.entity.Order;
 import hotpot.sys.service.FoodService;
 import hotpot.sys.service.FrontUserService;
 import hotpot.sys.service.MsgService;
+import hotpot.sys.service.NewsService;
 import hotpot.sys.service.OrderService;
 /***
  * 前台，首页各种连接登陆等
@@ -47,10 +48,25 @@ public class FrontController {
 	@Autowired
 	private MsgService msgService;
 	
+	@Autowired
+	private NewsService newsService;
+	
 	@InitBinder  
 	protected void initBinder(HttpServletRequest request,   ServletRequestDataBinder binder) throws Exception {   
 	    binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true)); 
-	}  
+	} 
+	
+	@RequestMapping("news")
+	public String news(Model model) {
+		model.addAttribute("newss",newsService.findAll());
+		return "news";
+	}
+	@RequestMapping("viewnews")
+	public String news(Model model,Long id) {
+		model.addAttribute("bean",newsService.find(id));
+		return "viewnews";
+	}
+	
 	/***
 	 * 跳转到首页
 	 * @param model
@@ -91,7 +107,7 @@ public class FrontController {
 	@RequestMapping("foodcategory/{id}")
 	public String foodcategory(@PathVariable Long id,Model model) {
 		model.addAttribute("categorys",foodService.findAllCategory());
-		model.addAttribute("foods",foodService.findAll());
+		model.addAttribute("foods",foodService.findByCategory(id));
 		model.addAttribute("id",id);
 		return "food";
 	}

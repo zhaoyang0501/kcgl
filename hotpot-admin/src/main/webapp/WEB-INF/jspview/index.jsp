@@ -63,15 +63,23 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
+                        <shiro:hasRole name="b">
                             <li><a class="J_menuItem" href="sys/user/index">员工管理</a></li>
                             <li><a class="J_menuItem" href="sys/food/index">菜品管理</a></li>
-                            <li><a class="J_menuItem" href="sys/order/index">预定管理</a></li>
-                            <li><a class="J_menuItem" href="sys/seat/index">开台/点菜/结账</a></li>
-                             <li><a class="J_menuItem" href="sys/frontuser/index">注册会员管理</a></li>
                              <li><a class="J_menuItem" href="sys/msg/index">留言管理</a></li>
                              <li><a class="J_menuItem" href="sys/news/index">公告管理</a></li>
                              <li><a class="J_menuItem" href="sys/news/create">公告发布</a></li>
                              <li><a class="J_menuItem" href="sys/order/index">盈利统计</a></li>
+                        </shiro:hasRole>
+                         
+                         <shiro:hasAnyRoles name="b,c">
+                         <li><a class="J_menuItem" href="sys/order/index">预定管理</a></li>
+                            <li><a class="J_menuItem" href="sys/seat/index">开台/点菜/结账</a></li>
+                         </shiro:hasAnyRoles>    
+                            
+                             <li><a class="J_menuItem" href="sys/frontuser/index">注册会员管理</a></li>
+                            
+                             <li><a class="J_menuItem" href="sys/seat/formtodo">菜单查看</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -159,7 +167,7 @@
                 <a href="login.html" tppabs="http://www.zi-han.net/theme/hplus/login.html" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
             </div>
             <div class="row J_mainContent" id="content-main">
-                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="${pageContext.request.contextPath}/workflow/tasktodo"" tppabs="${pageContext.request.contextPath}/workflow/tasktodo"" frameborder="0" data-id="tasktodo" seamless></iframe>
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="${pageContext.request.contextPath}/sys/seat/index" tppabs="${pageContext.request.contextPath}/sys/seat/index" frameborder="0" data-id="tasktodo" seamless></iframe>
             </div>
             <div class="footer">
                 <div class="pull-right">&copy; 2014-2015 <a href="javascript:if(confirm(%27http://www.zi-han.net/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.zi-han.net/%27" tppabs="http://www.zi-han.net/" target="_blank">zihan's blog</a>

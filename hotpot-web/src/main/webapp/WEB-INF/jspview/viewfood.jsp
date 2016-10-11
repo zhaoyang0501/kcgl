@@ -64,7 +64,7 @@
           <div class="row">
             <div class="col-lg-12">
               <div class="envor-desktop-breadscrubs-inner">
-                <a href="${pageContext.request.contextPath}/index.html">首页</a><i class="fa fa-angle-double-right"></i>家务预约
+                <a href="${pageContext.request.contextPath}/index.html">首页</a><i class="fa fa-angle-double-right"></i>查看菜品
               </div>
             </div>
           </div>
@@ -106,13 +106,13 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                       <div class="item">
-                        <a href="http://www.jiawubang.me/Uploads/Picture/2015/06/10/JWB.ESiVw38b02a95b33szDN.jpg_280_200.jpg" class="colorbox cboxElement"><img src="http://www.jiawubang.me/Uploads/Picture/2015/06/10/JWB.ESiVw38b02a95b33szDN.jpg_280_200.jpg" alt=""></a>
+                        <a href="http://127.0.0.1:8080/${pageContext.request.contextPath}/upload/${food.img }" class="colorbox cboxElement"><img src="http://127.0.0.1:8080/${pageContext.request.contextPath}/upload/${food.img }" alt=""></a>
                         <div class="carousel-caption">
                           Laptop
                         </div>
                       </div>
                       <div class="item active">
-                        <a href="http://www.jiawubang.me/Uploads/Picture/2015/06/10/JWB.VsOpd84711f2b12NmUpH.jpg_280_200.jpg" class="colorbox cboxElement"><img src="http://www.jiawubang.me/Uploads/Picture/2015/06/10/JWB.VsOpd84711f2b12NmUpH.jpg_280_200.jpg" alt=""></a>
+                        <a href="http://127.0.0.1:8080/${pageContext.request.contextPath}/upload/${food.img }" class="colorbox cboxElement"><img src="http://127.0.0.1:8080/${pageContext.request.contextPath}/upload/${food.img }" alt=""></a>
                         <div class="carousel-caption">
                           Laptop
                         </div>
@@ -133,6 +133,20 @@
 
                 //-->
                 <div class="col-lg-9">
+                
+                <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style_24x24">
+	<a class="jiathis_button_qzone"></a>
+	<a class="jiathis_button_tsina"></a>
+	<a class="jiathis_button_tqq"></a>
+	<a class="jiathis_button_weixin"></a>
+	<a class="jiathis_button_renren"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+                
                   <h3 style="margin-top: 0px;">${food.name }</h3>
                   <p class="price">￥${food.price }</p>
                     <form class="envor-f1" action="submitorder" method="post">
@@ -161,7 +175,7 @@
 	                  
 	                  <c:forEach items="${msgs }"  var="bean">
 	                  	 <div class="inner">
-	                   	 	<figure><img src="${pageContext.request.contextPath}/img/img2.png" alt=""></figure>
+	                   	 	<figure><img src="${pageContext.request.contextPath}/img/teacher_male.png" alt=""></figure>
 	                    	<p class="meta"><span class="author"><a href="">${bean.frontUser.name }</a> says:</span> <span class="date">发表于：${bean.createDate }</span></p>
 	                    	<div class="entry">${bean.body }</div>
 	                 	 </div>
