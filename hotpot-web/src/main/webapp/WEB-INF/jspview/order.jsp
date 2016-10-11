@@ -54,7 +54,7 @@
     <![endif]-->
    
    	<%@include file="./header.jsp" %>
-   
+   <%@include file="./validateLogin.jsp" %>
    <div class="envor-content" style="padding-top: 0px;">
       <section class="envor-desktop-breadscrubs">
         <div class="container">

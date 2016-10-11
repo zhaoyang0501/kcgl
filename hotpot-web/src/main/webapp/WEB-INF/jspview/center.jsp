@@ -53,7 +53,7 @@
     <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
     <![endif]-->
    	<%@include file="./header.jsp" %>
-   
+    	<%@include file="./validateLogin.jsp" %>
    <div class="envor-content" style="padding-top: 0px;">
       <section class="envor-desktop-breadscrubs">
         <div class="container">

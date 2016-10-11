@@ -75,29 +75,9 @@
                                         <div class="table-responsive">
                                             <table class="table table-striped table-hover">
                                                 <tbody id='cashed'>
-	                                                   <c:forEach items="${foods}" var="food"   varStatus="status">
-	                                                   	<input type="hidden" value="${food.id }" name="foodItems[${status.index }].food.id" />
-	                                                	<tr>
-	                                                	   <td ><img alt="image"  style="height: 60px" src="${pageContext.request.contextPath}/upload/${food.img}"> </td>
-	                                                        <td><a data-toggle="tab" href="#contact-1" class="client-link">${food.name }</a>
-	                                                        </td>
-	                                                        <td> 
-	                                                        	 <input type="text"  name="foodItems[${status.index }].num" class="form-control" value="1" size="2"> 
-															</td>
-	                                                        
-	                                                        <td> </td>
-	                                                    </tr>
-	                                                	</c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
-                                        
-                                        
-                               		<div class="text-right">
-			                        	<button onclick="fun_gocheck()" class="btn btn-primary"><i class="fa fa-dollar"></i> 提交</button>
-			                    	</div>
-                                        
-                                        
                                      </div>
                                      </div>
                                     </form>

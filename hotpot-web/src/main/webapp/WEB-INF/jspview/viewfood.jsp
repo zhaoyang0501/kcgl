@@ -14,7 +14,7 @@
     <meta name="author" content="Suono Libero ( @rivathemes.com )">
     <link rel="shortcut icon" href="favicon.ico">
 
-    <title>Envor HTML5/CSS3 Template</title>
+    <title>von火锅店菜品</title>
 
     <!-- Bootstrap core CSS -->
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -57,7 +57,7 @@
     <![endif]-->
    
    	<%@include file="./header.jsp" %>
-   
+   <%@include file="./validateLogin.jsp" %>
    <div class="envor-content" style="padding-top: 0px;">
       <section class="envor-desktop-breadscrubs">
         <div class="container">

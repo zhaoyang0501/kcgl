@@ -15,8 +15,9 @@
                             <ul class="nav nav-tabs">
                                 <li class="active"><a data-toggle="tab" href="#tab-1"><i class="fa fa-user"></i> 待处理订单</a>
                                 </li>
+                                <!-- 
                                 <li class=""><a data-toggle="tab" href="#tab-2"><i class="fa fa-briefcase"></i> 已处理订单</a>
-                                </li>
+                                </li> -->
                             </ul>
                             
                             <div class="tab-content">

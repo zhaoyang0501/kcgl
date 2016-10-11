@@ -179,6 +179,11 @@ public class SeatController extends AbstractBaseCURDController<Seat,Long>  {
 			item.setPrice(food.getPrice());
 			form.getFoodItem().add(item);
 		}
+		Double totalprice=0d;
+		for(FoodItem item: form.getFoodItem()){
+			totalprice+=item.getNum()*item.getPrice();
+		}
+		form.setPrice(totalprice);
 		formService.save(form);
 		return new SuccessResponse();
 	}

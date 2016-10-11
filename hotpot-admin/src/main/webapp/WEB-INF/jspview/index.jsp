@@ -69,7 +69,6 @@
                              <li><a class="J_menuItem" href="sys/msg/index">留言管理</a></li>
                              <li><a class="J_menuItem" href="sys/news/index">公告管理</a></li>
                              <li><a class="J_menuItem" href="sys/news/create">公告发布</a></li>
-                             <li><a class="J_menuItem" href="sys/order/index">盈利统计</a></li>
                         </shiro:hasRole>
                          
                          <shiro:hasAnyRoles name="b,c">
