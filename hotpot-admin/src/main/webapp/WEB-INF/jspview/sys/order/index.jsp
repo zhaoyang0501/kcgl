@@ -23,7 +23,6 @@
                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                 <input name='_name' type="text" class="form-control" value="2016-10-09">
                             </div>
-                            
                             </div>
                             <button class="btn btn-primary" type="button" id='_search'>查询</button>
                         </form>

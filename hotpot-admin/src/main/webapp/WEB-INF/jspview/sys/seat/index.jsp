@@ -56,7 +56,7 @@
                                                         <td ><img alt="image"  style="height: 60px" src="${pageContext.request.contextPath}/upload/${food.img}"> </td>
                                                         <td><a data-toggle="tab" href="#contact-1" class="client-link">${food.name }</a>
                                                         </td>
-                                                        <td> <a tager='_blank' href='javascript:void(0)' onclick='fun_choose_item(${food.id})'>加入菜篮</a></td>
+                                                        <td> <a tager='_blank' href='javascript:void(0)' onclick='fun_additem(${food.id})'>加入菜篮</a></td>
                                                         <td> </td>
                                                     </tr>
                                                 	</c:forEach>
@@ -280,6 +280,18 @@
  		   }
  		});	
     }
+    /**执行付款动作*/
+    function fun_additem(id){
+    	$.ajax({
+ 		   url:  $.common.getContextPath() + "/sys/seat/additem?formid="+thisid+"&foodid="+id,
+ 		   success: function(msg){
+ 		     if(msg.code==1){
+ 		    	 toastr.success('加入菜篮成功');
+ 		     }
+ 		     
+ 		   }
+ 		});	
+    }
     
     
     function fun_gocheck(){
@@ -344,7 +356,8 @@
 			  area: "800px"
 		});
     }
-    function fun_choose(){
+    function fun_choose(id){
+    	thisid=id;
 		$("input[name='seatName']").val(name);
 	    	layer.open({
 				  type: 1,
@@ -463,7 +476,7 @@
 				                    "render": function ( data, type, row ) {
 				                    	if(row.state==1){   
 				                    		 return "<a   tager='_blank' href='javascript:void(0)' onclick='fun_check("+row.form.id+")'>结账</a>"+
-						                        "<a tager='_blank' href='javascript:void(0)' onclick='fun_choose("+data+")'>点菜 </a>";
+						                        "<a tager='_blank' href='javascript:void(0)' onclick='fun_choose("+row.form.id+")'>点菜 </a>";
 				                    	}else{
 				                    		 return "<a tager='_blank' href='javascript:void(0)' onclick='fun_open("+row.name+")'>开台</a>";
 				                    

@@ -16,6 +16,7 @@ import hotpot.common.dto.json.ObjectResponse;
 import hotpot.common.dto.json.Response;
 import hotpot.common.dto.json.SuccessResponse;
 import hotpot.common.web.AbstractBaseCURDController;
+import hotpot.sys.entity.Food;
 import hotpot.sys.entity.FoodItem;
 import hotpot.sys.entity.Form;
 import hotpot.sys.entity.FrontUser;
@@ -49,7 +50,12 @@ public class SeatController extends AbstractBaseCURDController<Seat,Long>  {
 	public String getBasePath() {
 		return "sys/seat";
 	}
-	
+	/****
+	 * 开台
+	 * @param userName
+	 * @param seatName
+	 * @return
+	 */
 	@RequestMapping("open")
 	@ResponseBody
 	public Response open(String userName,String seatName) {
@@ -76,7 +82,12 @@ public class SeatController extends AbstractBaseCURDController<Seat,Long>  {
 	public Response choose(Model model,Long formid) {
 		return new ObjectResponse<Form>(formService.find(formid));
 	}
-	
+	/***
+	 * 点击结账连接 查账单
+	 * @param model
+	 * @param formid
+	 * @return
+	 */
 	@RequestMapping("precheck")
 	@ResponseBody
 	public Response precheck(Model model,Long formid) {
@@ -90,6 +101,12 @@ public class SeatController extends AbstractBaseCURDController<Seat,Long>  {
 		return new ObjectResponse<Form>(formService.find(formid));
 	}
 	
+	/***
+	 * 执行付款动作
+	 * @param model
+	 * @param formid
+	 * @return
+	 */
 	@RequestMapping("check")
 	@ResponseBody
 	public Response check(Model model,Long formid) {
@@ -135,11 +152,55 @@ public class SeatController extends AbstractBaseCURDController<Seat,Long>  {
 		return new SuccessResponse();
 	}
 	
+	/***
+	 * 加入购物车
+	 * @param model
+	 * @param formid
+	 * @param foodid
+	 * @return
+	 */
+	@RequestMapping("additem")
+	@ResponseBody
+	public Response additem(Model model,Long formid,Long foodid) {
+		
+		Form form = formService.find(formid);
+		Food food = foodService.find(foodid);
+		if(isFoodInForm(form,food)){
+			for(FoodItem foodItem:form.getFoodItem()){
+				if(foodItem.getFood().getId().equals(food.getId())){
+					foodItem.setNum(foodItem.getNum()+1);
+				}
+			}
+		}else{
+			FoodItem item = new FoodItem();
+			item.setFood(food);
+			item.setForm(form);
+			item.setNum(1);
+			item.setPrice(food.getPrice());
+			form.getFoodItem().add(item);
+		}
+		formService.save(form);
+		return new SuccessResponse();
+	}
+	
+	
 	@Override
 	@RequestMapping("index")
 	public String index(Model model) {
 		model.addAttribute("seats", this.getSimpleCurdService().findAll());
 		model.addAttribute("foods", this.foodService.findAll());
 		return this.getBasePath()+"/index";
+	}
+	
+	private Boolean isFoodInForm(Form form,Food food){
+		if(form.getFoodItem()!=null){
+			for(FoodItem foodItem:form.getFoodItem()){
+				if(foodItem.getFood().getId().equals(food.getId())){
+					return true;
+				}
+			}
+		}
+		
+		 return false;
 	}
 }
