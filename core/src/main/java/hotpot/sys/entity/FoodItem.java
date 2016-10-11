@@ -6,12 +6,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import hotpot.common.entity.BaseEntity;
 @Entity
 @Table(name = "t_FoodItem")
 public class FoodItem extends BaseEntity<Long>{
 	
 	
+	@JsonIgnore
 	@ManyToOne(cascade = { CascadeType.REFRESH, CascadeType.MERGE }, optional = true)
 	@JoinColumn(name = "form_id")
 	private Form form;

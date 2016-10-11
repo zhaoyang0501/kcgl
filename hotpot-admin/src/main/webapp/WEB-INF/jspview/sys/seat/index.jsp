@@ -3,6 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/spinner/bootstrap/bootstrap-spinner.css" />
 </head>
 <body >
     <div class="wrapper wrapper-content animated fadeInRight">
@@ -33,14 +34,17 @@
    <div id='_formchoose' style="display: none;">
        <div class="ibox-content">
  		 <div class="row">
-                            <div class="col-sm-12 b-r">
-		                       <div class="clients-list">
+                <div class="col-sm-12 b-r">
+		                    
+		                    <div class="clients-list">
+                            
                             <ul class="nav nav-tabs">
                                 <li class="active"><a data-toggle="tab" href="#tab-1"><i class="fa fa-user"></i> 菜单</a>
                                 </li>
                                 <li class=""><a data-toggle="tab" href="#tab-2"><i class="fa fa-briefcase"></i> 已点</a>
                                 </li>
                             </ul>
+                            
                             <div class="tab-content">
                                 <div id="tab-1" class="tab-pane active">
                                     <div class="slimScrollDiv" style="position: relative; width: auto; height: 100%;"><div class="full-height-scroll" style="width: auto; height: 100%;">
@@ -62,58 +66,144 @@
                                         </div>
                                     </div><div class="slimScrollBar" style="width: 4px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 365.112px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
                                 </div>
+                                
+                                
                                 <div id="tab-2" class="tab-pane">
+                                   <form id='_form_check'>
+                                   	<input type="hidden" value="1" name="id" />
                                     <div class="slimScrollDiv" style="position: relative; width: auto; height: 100%;"><div class="full-height-scroll" style="width: auto; height: 100%;">
                                         <div class="table-responsive">
                                             <table class="table table-striped table-hover">
                                                 <tbody>
 	                                                   <c:forEach items="${foods}" var="food"   varStatus="status">
+	                                                   	<input type="hidden" value="${food.id }" name="foodItems[${status.index }].food.id" />
 	                                                	<tr>
-	                                                	<input type="hidden" value="${food.id }" name="foodItem[${status.index }].food.id" />
-	                                                    <input type="hidden" value="1" name="foodItem[${status.index }].num" />
-	                                                   
-	                                                        <td ><img alt="image"  style="height: 60px" src="${pageContext.request.contextPath}/upload/${food.img}"> </td>
+	                                                	   <td ><img alt="image"  style="height: 60px" src="${pageContext.request.contextPath}/upload/${food.img}"> </td>
 	                                                        <td><a data-toggle="tab" href="#contact-1" class="client-link">${food.name }</a>
 	                                                        </td>
-	                                                        <td> </td>
+	                                                        <td> 
+	                                                        	 <input type="text"  name="foodItems[${status.index }].num" class="form-control" value="1" size="2"> 
+															</td>
+	                                                        
 	                                                        <td> </td>
 	                                                    </tr>
 	                                                	</c:forEach>
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div></div><div class="slimScrollRail" style="width: 4px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div>
-                                	
-                                	<table class="table invoice-total">
+                                        
+                                        <table class="table invoice-total">
 				                        <tbody>
 				                            <tr>
 				                                <td><strong>总价：</strong>
 				                                </td>
-				                                <td>¥1026.00</td>
+				                                <td>¥</td>
 				                            </tr>
 				                            <tr>
-				                                <td><strong>税：</strong>
+				                                <td><strong>折扣：</strong>
 				                                </td>
-				                                <td>¥235.98</td>
+				                                <td>¥0.00</td>
 				                            </tr>
 				                            <tr>
 				                                <td><strong>总计</strong>
 				                                </td>
-				                                <td>¥1261.98</td>
+				                                <td>¥</td>
 				                            </tr>
 				                        </tbody>
 				                    </table>
                                		<div class="text-right">
-			                        <button class="btn btn-primary"><i class="fa fa-dollar"></i> 去付款</button>
+			                        	<button onclick="fun_gocheck()" class="btn btn-primary"><i class="fa fa-dollar"></i> 去付款</button>
 			                    	</div>
-                                </div>
+                                        
+                                        
+                                     </div>
+                                     </div>
+                                    </form>
+                                   </div>
+                                </div><!-- tab context -->
                             </div>
 
                         </div>
-                            </div>
-                        </div>
-                        </div>
+                  </div>
+             </div>
+         </div>
    </div>
+   
+   
+      <div id='_formcash' style="display: none;">
+       <div class="ibox-content">
+ 		 	<div class="row">
+              
+              <div class="col-sm-12">
+                <div class="ibox-content p-xl">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <address>
+                                        <strong>VON火锅店欢迎您</strong><br>
+                                     		  北京市海淀区上地十街10号<br>
+                                        <abbr title="Phone">总机：</abbr> (+86 10) 5992 8888
+                                    </address>
+                        </div>
+
+                        <div class="col-sm-6 text-right">
+                            	<address>
+                                        <abbr title="Phone">客户姓名：</abbr> <span id='cash_name' ></span>
+                                    </address>
+                            <p>
+                                <span><strong>下单日期：</strong>  <span id='cash_createDate' ></span>  </span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive m-t">
+                        <table class="table invoice-table">
+                            <thead>
+                                <tr>
+                                    <th>清单</th>
+                                    <th>数量</th>
+                                    <th>单价</th>
+                                    <th>总价</th>
+                                </tr>
+                            </thead>
+                            <tbody id='cashitem' >
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /table-responsive -->
+
+                    <table class="table invoice-total">
+                        <tbody>
+                            <tr>
+                                <td><strong>总价：</strong>
+                                </td>
+                                <td>¥<span class='cash_total'></span></td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>折扣：</strong>
+                                </td>
+                                <td>¥0.00</td>
+                            </tr>
+                            
+                            <tr>
+                                <td><strong>总计</strong>
+                                </td>
+                                <td>¥<span class='cash_total'></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-right">
+                        <button onclick="fun_docheck()" class="btn btn-primary"><i class="fa fa-dollar"></i> 付款完成</button>
+                    </div>
+                </div>
+            </div>
+              
+                            
+           </div>
+      </div>
+   </div>
+   
    
    <div id='_formopen' style="display: none;">
        <div class="ibox-content">
@@ -155,7 +245,7 @@
    </div>
    <script>
     var table=null;
-    
+    var thisid;
     $('.date').datepicker({
         format: 'yyyy-mm-dd',
         autoclose: true
@@ -176,6 +266,36 @@
     		   }
     		});
      }
+    
+    /**执行付款动作*/
+    function fun_docheck(){
+    	$.ajax({
+ 		   url:  $.common.getContextPath() + "/sys/seat/check?formid="+thisid,
+ 		   success: function(msg){
+ 		     if(msg.code==1){
+ 		    	 toastr.success('付款成功');
+ 		    	 table.draw();
+ 		     }
+ 		     layer.closeAll() ;
+ 		   }
+ 		});	
+    }
+    
+    
+    function fun_gocheck(){
+    	$.ajax({
+ 		   type: "POST",
+ 		   url:  $.common.getContextPath() + "/sys/seat/choose",
+ 		   data: $("#_form_check").serialize(),
+ 		   success: function(msg){
+ 		     if(msg.code==1){
+ 		    	 toastr.success('操作成功');
+ 		    	 table.draw();
+ 		     }
+ 		     layer.closeAll() ;
+ 		   }
+ 		});
+    }
     
     function submit_open(){
     	$.ajax({
@@ -233,23 +353,46 @@
 				  area: "800px"
 			});
     }
+    
+    function fun_check(id){
+    	thisid=id;
+    	$.ajax({
+  		   url:  $.common.getContextPath() + "/sys/seat/precheck?formid="+id,
+  		   success: function(msg){
+  		     if(msg.code==1){
+  		    	$("#cash_name").html(msg.datas.user.name);
+  		    	$("#cash_createDate").html(msg.datas.createDate);
+  		    	$(".cash_total").html(msg.datas.price);
+  		    	$("#cashitem").empty();
+  		    	
+  		    	for(i=0;i<msg.datas.foodItem.length;i++){
+  		    		$("#cashitem").append("<tr>"+
+			                  "  <td>"+
+			                  "  <div><strong>"+msg.datas.foodItem[i].food.name+"</strong>"+
+			                  "  </div>"+
+			               " </td>"+
+			               " <td>"+msg.datas.foodItem[i].num+"</td>"+
+			               " <td>¥"+msg.datas.foodItem[i].food.price+"</td>"+
+			               " <td>¥"+msg.datas.foodItem[i].food.price*msg.datas.foodItem[i].num+"</td>"+
+			           " </tr>");
+  		    	}
+  		    	
+  		    	layer.open({
+  				  type: 1,
+  				  skin: 'layui-layer-rim', 
+  				  content: $("#_formcash"),
+  				  area: "800px"
+  			});
+  		     }
+  		   }
+  		});
+    }
+    
     function fun_update(id){
     	$.ajax({
  		   url:  $.common.getContextPath() + "/sys/order/get?id="+id,
  		   success: function(msg){
  		     if(msg.code==1){
- 		    	$("input[name='id']").val(msg.datas.id);
- 		    	$("input[name='chinesename']").val(msg.datas.chinesename);
- 		    	$("radio[name='sex']").val(msg.datas.sex);
- 		   		$("input[name='username']").val(msg.datas.username);
- 				$("input[name='tel']").val(msg.datas.tel);
- 				$("input[name='email']").val(msg.datas.email);
- 				$("textarea[name='remark']").val(msg.datas.remark);
- 				$("input:checkbox[name='role']").prop('checked',false); 
- 				for(var i=0;i<msg.datas.roles.length;i++){
- 					$("input:checkbox[value='"+msg.datas.roles[i].id+"']").prop('checked',true); 
- 				}
- 				
  		    	layer.open({
       			  type: 1,
       			  skin: 'layui-layer-rim', 
@@ -262,6 +405,8 @@
      }
     
     $(document).ready(function(){
+    		$('#spinner').spinner();
+
         	$("#_new").click(function(){
         		$("input[name='id']").val("");
  		    	$("input[name='chinesename']").val("");
@@ -316,8 +461,8 @@
 								},
 				                {
 				                    "render": function ( data, type, row ) {
-				                    	if(row.state==1){
-				                    		 return "<a tager='_blank' href='javascript:void(0)' onclick='fun_delete("+data+")'>结账</a>"+
+				                    	if(row.state==1){   
+				                    		 return "<a   tager='_blank' href='javascript:void(0)' onclick='fun_check("+row.form.id+")'>结账</a>"+
 						                        "<a tager='_blank' href='javascript:void(0)' onclick='fun_choose("+data+")'>点菜 </a>";
 				                    	}else{
 				                    		 return "<a tager='_blank' href='javascript:void(0)' onclick='fun_open("+row.name+")'>开台</a>";
@@ -342,6 +487,7 @@
 		     } )
         });
     </script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/plugins/spinner/spinner/jquery.spinner.js"></script>
 </body>
 
 </html>
