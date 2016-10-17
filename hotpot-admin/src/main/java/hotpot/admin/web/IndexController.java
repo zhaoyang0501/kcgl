@@ -1,4 +1,6 @@
 package hotpot.admin.web;
+import hotpot.core.entity.User;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -51,4 +53,5 @@ public class IndexController {
 	public String  index(HttpSession session,Model model) {
 		return "index";
 	}
+
 }

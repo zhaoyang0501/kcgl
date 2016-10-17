@@ -48,8 +48,8 @@
 		</div>
 	</div>
 
-	<div id='_form' style="display: none;">
-		<div class="ibox-content">
+	<div id='_form' style="margin-top: 30000px " >
+		<div class="ibox-content" >
 			<div class="row">
 				<div class="col-sm-12 b-r">
 					<form class="form-horizontal" action="" method="get">
@@ -87,17 +87,17 @@
 									<td>照片</td>
 									<td> 
 										  <div id="uploader" >
-					                          <div class="container-fluid">
-												  <div id="thelist" class="row ">
-												  </div>
-												</div>
-											    	
-											    	<div class="row">
-											    		<div class="col-xs-12">
-											    			<div id="picker">选择文件</div>
-											    		</div>
-											    	</div>
-											</div>
+							                        <div class="container-fluid">
+														  <div id="thelist" class="row ">
+														  </div>
+														</div>
+													    	
+													    	<div class="row">
+													    		<div class="col-xs-12">
+													    			<div id="picker">选择文件</div>
+													    		</div>
+													    	</div>
+													</div>
 									</td>
 								</tr>
 
@@ -178,27 +178,28 @@
         			  content: $("#_form"),
         			  area: "800px"
         			});
+        		$("#_form").css("margin-top","0px");
  		     }
  		   }
  		});
      }
     var uploader=null;
     $(document).ready(function(){
-    	uploader = WebUploader.create({
+    	var uploader = WebUploader.create({
     		auto:true,
-    		fileNumLimit :1,
     	    server: '${pageContext.request.contextPath}/fileupload/upload',
-    	    pick:{id : "#picker",multiple: false} ,
+    	    pick: '#picker',
     	    resize: false
     	});
     	
     	uploader.on( 'fileQueued', function( file ) {
+    		
     		 var $li = $(
     		            '<div id="' + file.id + '" class="col-xs-12 col-sm-2 file-item thumbnail">' +
     		                '<img>' +
     		                '<div class="info">' + file.name + '</div>' +
     		                '<p class="state">等待上传...</p>' +
-    		     	       ' <input type="hidden" name="img" value=""/>'+
+    		     	       ' <input type="hidden" name="filestr" value=""/>'+
     		            '</div>'
     		            ),
     		        $img = $li.find('img');
@@ -213,7 +214,6 @@
     		        $img.attr( 'src', src );
     		    }, 100, 100 );
     	});
-    	
     	uploader.on( 'uploadSuccess',  function(file, data){
     		 $( '#'+file.id ).find('p.state').text('已上传');
     		 $( '#'+file.id ).find("input").val(data.datas.filepath);
@@ -228,7 +228,7 @@
     	    $( '#'+file.id ).find('.progress').fadeOut();
     	});
     	
-    	$("#submitfile").on( 'click', function() {
+    	 $("#submitfile").on( 'click', function() {
     		 uploader.upload();
     	  });
     	
@@ -246,6 +246,7 @@
         			  content: $("#_form"),
         			  area: "800px"
         			});
+        		$("#_form").css("margin-top","0px");
         	});
         	table=$('#dt_table_view').DataTable( {
         		"dom": "rt<'row'<'col-sm-5'i><'col-sm-7'p>>",
@@ -298,8 +299,7 @@
 		     } )
         });
     </script>
-	<script
-		src="${pageContext.request.contextPath}/plugins/webuploader/webuploader.js "></script>
+	<script src="${pageContext.request.contextPath}/plugins/webuploader/webuploader.js "></script>
 
 </body>
 

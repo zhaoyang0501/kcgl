@@ -42,9 +42,7 @@
                                 </span>
                             </a>
                             <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                                <li><a class="J_menuItem" href="form_avatar.html" tppabs="${pageContext.request.contextPath}/changepassword">修改密码</a>
-                                </li>
-                                <li><a class="J_menuItem" href="profile.html" tppabs="${pageContext.request.contextPath}/usercenter">个人资料</a>
+                                <li><a class="J_menuItem" href="${pageContext.request.contextPath}/sys/user/center" tppabs="${pageContext.request.contextPath}/sys/user/center">个人资料</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li><a href="${pageContext.request.contextPath}/loginout"  tppabs="${pageContext.request.contextPath}/loginout">安全退出</a>
