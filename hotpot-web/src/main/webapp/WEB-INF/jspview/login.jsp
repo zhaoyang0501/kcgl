@@ -90,7 +90,9 @@
 			  <div class="panel-body">
 			    <form class="form-vertical envor-f1" action="./dologin" method="post">
 			                  <p><label for="rt1-first-name">姓名*</label>  <input type="text"  name='username'></p>
-			                  <p><label for="rt1-first-name">姓名*</label> <input type="password" name='password'></p>
+			                  <p><label for="rt1-first-name">密码*</label> <input type="password" name='password'></p>
+			                  <p><label for="rt1-first-name">验证码*</label> <input type="text" name='code' > <img id="imgObj" alt="验证码" src="code" />
+    <a href="#" onclick="changeImg()" style="height: 100px">换一张</a></p>
 			         
 			                  <button type="submit" class="btn btn-orange">登陆</button>
 			              </form>
@@ -130,6 +132,23 @@
     <script src="js/layerslider/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
     <script src="js/jquery.rivathemes.js"></script>
     <script type="text/javascript">
+    function changeImg() {
+        var imgSrc = $("#imgObj");
+        var src = imgSrc.attr("src");
+        imgSrc.attr("src", chgUrl(src));
+      }
+      //时间戳   
+      //为了使每次生成图片不一致，即不让浏览器读缓存，所以需要加上时间戳   
+      function chgUrl(url) {
+        var timestamp = (new Date()).valueOf();
+        url = url.substring(0, 17);
+        if ((url.indexOf("&") >= 0)) {
+          url = url + "×tamp=" + timestamp;
+        } else {
+          url = url + "?timestamp=" + timestamp;
+        }
+        return url;
+      }
       $('document').ready(function() {
           /*
 

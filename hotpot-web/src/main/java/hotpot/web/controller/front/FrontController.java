@@ -198,7 +198,14 @@ public class FrontController {
 	 * @return
 	 */
 	@RequestMapping("dologin")
-	public String dologin(User user,HttpSession httpSession,Model model) {
+	public String dologin(User user,HttpSession httpSession,Model model,String code) {
+		String oldcode = (String)httpSession.getAttribute("code");
+		if(!oldcode.equals(code.toUpperCase())){
+			httpSession.removeAttribute("user");
+    		model.addAttribute("tip","登陆失败 验证码不正确!");
+    		return "login";
+		}
+		
 		FrontUser loginuser=frontUserService.login(user.getUsername(), user.getPassword());
     	if(loginuser!=null){
     		httpSession.setAttribute("user", loginuser);
