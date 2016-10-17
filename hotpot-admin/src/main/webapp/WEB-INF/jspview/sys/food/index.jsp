@@ -166,29 +166,25 @@
  		   success: function(msg){
  		     if(msg.code==1){
  		    	$("input[name='id']").val(msg.datas.id);
- 		    	$("input[name='chinesename']").val(msg.datas.chinesename);
- 		    	$("radio[name='sex']").val(msg.datas.sex);
- 		   		$("input[name='username']").val(msg.datas.username);
- 				$("input[name='tel']").val(msg.datas.tel);
- 				$("input[name='email']").val(msg.datas.email);
+ 		    	$("input[name='name']").val(msg.datas.name);
+ 		    	$("input[name='foodCategory.id']").val(msg.datas.foodCategory.id);
+ 		    	$("input[name='price']").val(msg.datas.price);
  				$("textarea[name='remark']").val(msg.datas.remark);
- 				$("input:checkbox[name='role']").prop('checked',false); 
- 				for(var i=0;i<msg.datas.roles.length;i++){
- 					$("input:checkbox[value='"+msg.datas.roles[i].id+"']").prop('checked',true); 
- 				}
- 		    	layer.open({
-      			  type: 1,
-      			  skin: 'layui-layer-rim', 
-      			  content: $("#_form"),
-      			  area: "800px"
-      			});
+ 				uploader.reset();
+ 				  $("#thelist").empty();
+        		layer.open({
+        			  type: 1,
+        			  skin: 'layui-layer-rim', //加上边框
+        			  content: $("#_form"),
+        			  area: "800px"
+        			});
  		     }
  		   }
  		});
      }
-    
+    var uploader=null;
     $(document).ready(function(){
-    	var uploader = WebUploader.create({
+    	uploader = WebUploader.create({
     		auto:true,
     		fileNumLimit :1,
     	    server: '${pageContext.request.contextPath}/fileupload/upload',
