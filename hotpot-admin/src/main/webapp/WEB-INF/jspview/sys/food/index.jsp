@@ -199,7 +199,7 @@
     		                '<img>' +
     		                '<div class="info">' + file.name + '</div>' +
     		                '<p class="state">等待上传...</p>' +
-    		     	       ' <input type="hidden" name="filestr" value=""/>'+
+    		     	       ' <input type="hidden" name="img" value=""/>'+
     		            '</div>'
     		            ),
     		        $img = $li.find('img');
