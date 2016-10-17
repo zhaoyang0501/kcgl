@@ -92,7 +92,9 @@ public class FrontController {
 		return "myorder";
 	}
 	@RequestMapping("doorder")
-	public String doorder(Order order,Model model) {
+	public String doorder(Order order,Model model,HttpSession httpSession) {
+		FrontUser user=(FrontUser)httpSession.getAttribute("user");
+		order.setFrontUser(user);
 		this.orderService.save(order);
 		model.addAttribute("tip","预定成功！");
 		return "order";
