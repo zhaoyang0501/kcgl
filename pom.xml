@@ -9,19 +9,17 @@
 		<relativePath/>
 	</parent>
 	
-	<groupId>hotpot</groupId>
-	<artifactId>hotpot-all</artifactId>
-	<name>hotpot</name>
+	<groupId>kcgl</groupId>
+	<artifactId>kcgl-all</artifactId>
+	<name>kcgl</name>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	
 	<modules>
 		<!-- 后台管理 -->
-		<module>hotpot-admin</module>
+		<module>kcgl-admin</module>
 		<!-- 核心业务 -->
-		<module>hotpot-core</module>
-		
-		<module>hotpot-web</module>
+		<module>kcgl-core</module>
 	</modules>
 <dependencies>
 <dependency>
