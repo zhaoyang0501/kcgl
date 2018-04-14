@@ -71,29 +71,44 @@
                      <li>
                         <a href="#">
                             <i class="fa fa fa-bar-chart-o"></i>
-                            <span class="nav-label">出入库管理</span>
+                            <span class="nav-label">库存管理</span>
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                           	 <li><a class="J_menuItem" href="sys/in/index">成品/材料入库</a></li>
-                              <li><a class="J_menuItem" href="sys/out/index">成品/材料出库</a></li>
-                        </ul>
-                    </li>
-                    
-                    
-                    
-                     <li>
-                        <a href="#">
-                            <i class="fa fa fa-bar-chart-o"></i>
-                            <span class="nav-label">统计查询</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                           	  <li><a class="J_menuItem" href="sys/food/index">库存管理</a></li>
+                           	 <li><a class="J_menuItem" href="sys/in/index">入库</a></li>
+                              <li><a class="J_menuItem" href="sys/out/index">出库</a></li>
+                               <li><a class="J_menuItem" href="sys/food/index">库存管理</a></li>
                            	   <li><a class="J_menuItem" href="sys/out/report">出库查询统计</a></li>
                              <li><a class="J_menuItem" href="sys/in/report">入库查询统计</a></li>
                         </ul>
                     </li>
+                    
+                      <li>
+                        <a href="#">
+                            <i class="fa fa fa-bar-chart-o"></i>
+                            <span class="nav-label">配送管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                           	 <li><a class="J_menuItem" href="sys/in/index">驾驶员管理</a></li>
+                              <li><a class="J_menuItem" href="sys/out/index">汽车管理</a></li>
+                               <li><a class="J_menuItem" href="sys/food/index">运单管理</a></li>
+                           	   <li><a class="J_menuItem" href="sys/out/report">回执管理</a></li>
+                             <li><a class="J_menuItem" href="sys/in/report">跟踪管理</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a href="#">
+                            <i class="fa fa fa-bar-chart-o"></i>
+                            <span class="nav-label">客户管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                           	 <li><a class="J_menuItem" href="sys/in/index">驾驶员管理</a></li>
+                        </ul>
+                    </li>
+                    
                 </ul>
             </div>
         </nav>
