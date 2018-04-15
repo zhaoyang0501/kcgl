@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
  <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>  
+ <%@taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 
@@ -11,7 +11,7 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp" />
     <title><spring:message code="jsp.index.title" /> </title>
-    
+
     <!--[if lt IE 8]>
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
@@ -32,12 +32,12 @@
                 <ul class="nav" id="side-menu">
                     <li class="nav-header">
                         <div class="dropdown profile-element">
-                            <span></span>
+                            <span><img alt="image" class="img-circle" src="img/profile_small.jpg" tppabs="http://www.zi-han.net/theme/hplus/img/profile_small.jpg" /></span>
                             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                                 <span class="clear">
-                                <shiro:user>  
-									欢迎登录  
-								</shiro:user>  
+                                <shiro:user>
+									欢迎登录
+								</shiro:user>
                                <span class="text-muted text-xs block">${currentUser.chinesename }<b class="caret"></b></span>
                                 </span>
                             </a>
@@ -52,9 +52,9 @@
                         <div class="logo-element">H+
                         </div>
                     </li>
-                    
-                    
-                    <shiro:hasRole name="c">
+
+
+
                      <li>
                         <a href="#">
                             <i class="fa fa fa-bar-chart-o"></i>
@@ -65,9 +65,9 @@
                             <li><a class="J_menuItem" href="sys/user/index">员工管理</a></li>
                         </ul>
                     </li>
-                    </shiro:hasRole>
-                    
-                    
+
+
+
                      <li>
                         <a href="#">
                             <i class="fa fa fa-bar-chart-o"></i>
@@ -79,9 +79,9 @@
                               <li><a class="J_menuItem" href="sys/out/index">成品/材料出库</a></li>
                         </ul>
                     </li>
-                    
-                    
-                    
+
+
+
                      <li>
                         <a href="#">
                             <i class="fa fa fa-bar-chart-o"></i>
@@ -94,6 +94,19 @@
                              <li><a class="J_menuItem" href="sys/in/report">入库查询统计</a></li>
                         </ul>
                     </li>
+
+                    <li>
+                        <a href="#">
+                            <i class="fa fa fa-bar-chart-o"></i>
+                            <span class="nav-label">货位管理</span>
+                            <span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+                            <li><a class="J_menuItem" href="sys/good/index">货位管理</a></li>
+                        </ul>
+
+                    </li>
+
                 </ul>
             </div>
         </nav>
@@ -110,7 +123,40 @@
                         </form>
                     </div>
                     <ul class="nav navbar-top-links navbar-right">
-                     
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                                <i class="fa fa-bell"></i> <span class="label label-primary">8</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a href="mailbox.html" tppabs="http://www.zi-han.net/theme/hplus/mailbox.html">
+                                        <div>
+                                            <i class="fa fa-envelope fa-fw"></i> 您有16条未读消息
+                                            <span class="pull-right text-muted small">4分钟前</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="profile.html" tppabs="http://www.zi-han.net/theme/hplus/profile.html">
+                                        <div>
+                                            <i class="fa fa-qq fa-fw"></i> 3条新回复
+                                            <span class="pull-right text-muted small">12分钟钱</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <div class="text-center link-block">
+                                        <a class="J_menuItem" href="notifications.html" tppabs="http://www.zi-han.net/theme/hplus/notifications.html">
+                                            <strong>查看所有 </strong>
+                                            <i class="fa fa-angle-right"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="dropdown hidden-xs">
                             <a class="right-sidebar-toggle" aria-expanded="false">
                                 <i class="fa fa-tasks"></i> 主题
@@ -149,6 +195,8 @@
                 <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="${pageContext.request.contextPath}/sys/in/index" tppabs="${pageContext.request.contextPath}/sys/in/index" frameborder="0" data-id="tasktodo" seamless></iframe>
             </div>
             <div class="footer">
+                <div class="pull-right">&copy; 2014-2015 <a href="javascript:if(confirm(%27http://www.zi-han.net/  \n\nThis file was not retrieved by Teleport Pro, because it is addressed on a domain or path outside the boundaries set for its Starting Address.  \n\nDo you want to open it from the server?%27))window.location=%27http://www.zi-han.net/%27" tppabs="http://www.zi-han.net/" target="_blank">zihan's blog</a>
+                </div>
             </div>
         </div>
         <!--右侧部分结束-->
@@ -237,7 +285,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
 
             </div>

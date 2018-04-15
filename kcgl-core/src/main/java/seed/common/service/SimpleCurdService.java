@@ -60,6 +60,8 @@ public class SimpleCurdService <M extends BaseEntity<?>, ID extends Serializable
          return result;
    } 
 	
+	
+	
 	public void delete(ID id){
 		simpleCurdRepository.delete(id);
 	}
