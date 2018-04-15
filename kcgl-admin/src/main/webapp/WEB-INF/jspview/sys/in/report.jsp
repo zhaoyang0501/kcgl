@@ -10,7 +10,7 @@
 			<div class="col-sm-12">
 				<div class="ibox ">
 					<div class="ibox-title">
-						<h5>库存管理</h5>
+						<h5>入库管理</h5>
 						<div class="ibox-tools"></div>
 					</div>
 

@@ -90,11 +90,10 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                           	 <li><a class="J_menuItem" href="sys/in/index">驾驶员管理</a></li>
-                              <li><a class="J_menuItem" href="sys/out/index">汽车管理</a></li>
-                               <li><a class="J_menuItem" href="sys/food/index">运单管理</a></li>
-                           	   <li><a class="J_menuItem" href="sys/out/report">回执管理</a></li>
-                             <li><a class="J_menuItem" href="sys/in/report">跟踪管理</a></li>
+                           	   <li><a class="J_menuItem" href="sys/driver/index">驾驶员管理</a></li>
+                               <li><a class="J_menuItem" href="sys/car/index">汽车管理</a></li>
+                               <li><a class="J_menuItem" href="sys/bill/index">运单管理</a></li>
+                           	   <li><a class="J_menuItem" href="sys/note/index">回执管理</a></li>
                         </ul>
                     </li>
                     
@@ -105,7 +104,7 @@
                             <span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                           	 <li><a class="J_menuItem" href="sys/in/index">驾驶员管理</a></li>
+                           	  <li><a class="J_menuItem" href="sys/user/index2">客户管理</a></li>
                         </ul>
                     </li>
                     

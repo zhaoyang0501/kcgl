@@ -20,7 +20,7 @@
 		                           		</thead>
 		                           		<tbody>
 		                           			<tr>
-		                           				<td>货物编码（可用扫描枪）</td>
+		                           				<td>货物编码</td>
 		                           				<td> <input  name='foodCode' onblur="fun_initfood()" id="foodCode" class="form-control"/></td>
 		                           				
 		                           				

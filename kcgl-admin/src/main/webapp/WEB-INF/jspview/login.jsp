@@ -38,17 +38,16 @@
             <div class="col-sm-7">
                 <div class="signin-info">
                     <div class="logopanel m-b">
-                        <h1>西无二仓库管理系统</h1>
+                        <h1>四川万顺达物流公司</h1>
                     </div>
                 </div>
             </div>
             <div class="col-sm-5">
                 <form method="post" action="login">
                     <h4 class="no-margins">登录：</h4>
-                    <p class="m-t-md">西无二仓库管理系统</p>
+                    <p class="m-t-md">四川万顺达物流公司</p>
                     <input type="text" name='username' class="form-control uname" placeholder="用户名" />
                     <input type="password" name='password' class="form-control pword m-b" placeholder="密码" />
-                    <a href="">忘记密码了？</a>
                     <button class="btn btn-success btn-block">登录</button>
                 </form>
             </div>
