@@ -38,12 +38,7 @@
 		                           				<td>主计量单位</td>
 		                           			
 		                           				<td>
-		                           			
-		                           				 	<select name='unit' class="form-control">
-				                           				<option value="只">只</option>
-				                           				<option value="盒">盒</option>
-				                           				<option value="箱">箱</option>
-				                           			</select>
+		                           						<input name="unit" class="form-control"/>
 				                           		</td>
 		                           			
 		                           			</tr>
